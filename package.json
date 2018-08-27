@@ -1,0 +1,17 @@
+{
+  "name": "finnish-exercises",
+  "version": "0.0.1",
+  "description": "Web application to help learn Finnish with exercises",
+  "main": "index.js",
+  "scripts": {
+    "go": "gulp css-compile"
+  },
+  "author": "Elvann",
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-sass": "^4.0.1",
+    "mdbootstrap": "^4.5.2"
+  }
+}
