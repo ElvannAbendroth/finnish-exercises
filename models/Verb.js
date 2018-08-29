@@ -1,14 +1,14 @@
 class Verb {
-    constructor(p_infinitive, p_type) {
-        this.infinitive = p_infinitive;
-        this.type = p_type;
+    constructor(infinitive, type) {
+        this.infinitive = infinitive;
+        this.type = type;
     }
 
-    get infinitive() {
+    getInfinitive() {
         return this.infinitive;
     }
 
-    get type() {
+    getType() {
         return this.type;
     }
 }
