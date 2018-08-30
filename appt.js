@@ -1,4 +1,6 @@
 const Verb = require('./models/Verb');
+const pronouns = require('./models/PronounEnum');
+const verbsPresent = require('./models/verbData');
 const Conjugation = require('./models/Conjugation');
 const readline = require('readline')
 const rl = readline.createInterface({
@@ -6,17 +8,6 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-
-// import from Conjugation
-const pronouns = ["Minä", "Sinä", "Hän", "Me", "Te", "He"];
-const verbsPresent = {
-    "rakastaa": ["rakastan", "rakastat", "rakastaa", "rakastamme", "rakastatte", "rakastavat"],
-    "syödä": ["syön", "syöt", "syö", "syömme", "syötte", "syövat"],
-    "haluta": ["haluan", "haluat", "haluaa", "haluamme", "haluatte", "haluavat"],
-    "olla": ["olen", "olet", "on", "olemme", "olette", "ovat"],
-    "puhua": ["puhun", "puhut", "puhuu", "puhumme", "puhutte", "puhuvat"],
-    "kirjoittaa": ["kirjoitan", "kirjoitat", "kirjoittaa", "kirjoitamme", "kirjoitate", "kirjoittavat"]
-};
 
 // move functions to another file
 function randomizeConjugatedVerb(){
