@@ -32,12 +32,24 @@ function randomizeConjugatedVerb(){
     return randomConjugatedVerb;
 };
 
-function printRandomconjugatedVerbs(amount){
+function printRandomConjugatedVerbs(amount){
     var i;
     for (i = 0; i < amount; i++) { 
         var rv1 = randomizeConjugatedVerb();
         console.log(rv1.getPronoun() + " " + rv1.conjugatePresent());
     }
+};
+
+//returns an array of random conjugated verbs of an {amount} of elements
+function randomConjugatedVerbsArray(amount){
+    var i;
+    var array = [];
+    for (i = 0; i < amount; i++) { 
+        var randomConjugatedVerb = randomizeConjugatedVerb();
+        //console.log(randomConjugatedVerb);
+        array.push(randomConjugatedVerb);
+    }
+    return array;
 };
 
 function verbConjugationMatch(promptConjugatedVerb, userVerbInput){
@@ -52,17 +64,14 @@ function verbConjugationMatch(promptConjugatedVerb, userVerbInput){
     }
 };
 
-
-exerciseVerb = randomizeConjugatedVerb();
-exerciseVerb2 = randomizeConjugatedVerb();
-exerciseVerb3 = randomizeConjugatedVerb();
-exerciseVerb4 = randomizeConjugatedVerb();
+const numberOfExercises = 4;
+const verbExercises = (randomConjugatedVerbsArray(numberOfExercises));
 
 const exercises = [
-{ prompt: "Infinitive: " + exerciseVerb.getVerb().getInfinitive() + "  Pronoun: " + exerciseVerb.getPronoun() + " \n type answer: ", correctAnswer: exerciseVerb.conjugatePresent()},
-{ prompt: "Infinitive: " + exerciseVerb2.getVerb().getInfinitive() + "  Pronoun: " + exerciseVerb2.getPronoun() + " \n type answer: ", correctAnswer: exerciseVerb2.conjugatePresent() },
-{ prompt: "Infinitive: " + exerciseVerb3.getVerb().getInfinitive() + "  Pronoun: " + exerciseVerb3.getPronoun() + " \n type answer: ", correctAnswer: exerciseVerb3.conjugatePresent() },
-{ prompt: "Infinitive: " + exerciseVerb4.getVerb().getInfinitive() + "  Pronoun: " + exerciseVerb4.getPronoun() + " \n type answer: ", correctAnswer: exerciseVerb4.conjugatePresent() }
+{ prompt: "Infinitive: " + verbExercises[0].getVerb().getInfinitive() + "  Pronoun: " + verbExercises[0].getPronoun() + " \n type answer: ", correctAnswer: verbExercises[0].conjugatePresent()},
+{ prompt: "Infinitive: " + verbExercises[1].getVerb().getInfinitive() + "  Pronoun: " + verbExercises[1].getPronoun() + " \n type answer: ", correctAnswer: verbExercises[1].conjugatePresent() },
+{ prompt: "Infinitive: " + verbExercises[2].getVerb().getInfinitive() + "  Pronoun: " + verbExercises[2].getPronoun() + " \n type answer: ", correctAnswer: verbExercises[2].conjugatePresent() },
+{ prompt: "Infinitive: " + verbExercises[3].getVerb().getInfinitive() + "  Pronoun: " + verbExercises[3].getPronoun() + " \n type answer: ", correctAnswer: verbExercises[3].conjugatePresent() }
 
 ];
 
