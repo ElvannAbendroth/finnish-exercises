@@ -1,9 +1,9 @@
 const Verb = require('./Verb');
+const pronouns = require('./PronounEnum');
 
-const pronouns = ["Minä", "Sinä", "Hän", "Me", "Te", "He"];
 const verbsPresent = {
     "rakastaa": ["rakastan", "rakastat", "rakastaa", "rakastamme", "rakastatte", "rakastavat"],
-    "syödä": ["syön", "syöt", "syö", "syömme", "syötte", "syövat"],
+    "syödä": ["syön", "syöt", "syö", "syömme", "syötte", "syövät"],
     "haluta": ["haluan", "haluat", "haluaa", "haluamme", "haluatte", "haluavat"],
     "olla": ["olen", "olet", "on", "olemme", "olette", "ovat"],
     "puhua": ["puhun", "puhut", "puhuu", "puhumme", "puhutte", "puhuvat"],
