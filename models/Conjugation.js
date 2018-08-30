@@ -7,7 +7,7 @@ const verbsPresent = {
     "haluta": ["haluan", "haluat", "haluaa", "haluamme", "haluatte", "haluavat"],
     "olla": ["olen", "olet", "on", "olemme", "olette", "ovat"],
     "puhua": ["puhun", "puhut", "puhuu", "puhumme", "puhutte", "puhuvat"],
-    "kirjoitta": ["kirjoitan", "kirjoitat", "kirjoittaa", "kirjoitamme", "kirjoitate", "kirjoittavat"]
+    "kirjoittaa": ["kirjoitan", "kirjoitat", "kirjoittaa", "kirjoitamme", "kirjoitate", "kirjoittavat"]
 };
 
 
