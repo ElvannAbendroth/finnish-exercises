@@ -3,7 +3,11 @@ const Verb = require('./Verb');
 const pronouns = ["Minä", "Sinä", "Hän", "Me", "Te", "He"];
 const verbsPresent = {
     "rakastaa": ["rakastan", "rakastat", "rakastaa", "rakastamme", "rakastatte", "rakastavat"],
-    "syödä": ["syön", "syöt", "syö", "syömme", "syötte", "syövat"]
+    "syödä": ["syön", "syöt", "syö", "syömme", "syötte", "syövat"],
+    "haluta": ["haluan", "haluat", "haluaa", "haluamme", "haluatte", "haluavat"],
+    "olla": ["olen", "olet", "on", "olemme", "olette", "ovat"],
+    "puhua": ["puhun", "puhut", "puhuu", "puhumme", "puhutte", "puhuvat"],
+    "kirjoitta": ["kirjoitan", "kirjoitat", "kirjoittaa", "kirjoitamme", "kirjoitate", "kirjoittavat"]
 };
 
 
@@ -45,12 +49,12 @@ class Conjugation {
     }
 
     
-
     conjugatePresent(){
 
         return verbsPresent[this.getVerb().getInfinitive()][this.getPronounIndex()];
 
     }
+
 }
 
 module.exports = Conjugation;

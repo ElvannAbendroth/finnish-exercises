@@ -1,43 +1,85 @@
 const Verb = require('./models/Verb');
 const Conjugation = require('./models/Conjugation');
+const readline = require('readline')
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
 
 // import from Conjugation
 const pronouns = ["Minä", "Sinä", "Hän", "Me", "Te", "He"];
 const verbsPresent = {
     "rakastaa": ["rakastan", "rakastat", "rakastaa", "rakastamme", "rakastatte", "rakastavat"],
-    "syödä": ["syön", "syöt", "syö", "syömme", "syötte", "syövat"]
+    "syödä": ["syön", "syöt", "syö", "syömme", "syötte", "syövat"],
+    "haluta": ["haluan", "haluat", "haluaa", "haluamme", "haluatte", "haluavat"],
+    "olla": ["olen", "olet", "on", "olemme", "olette", "ovat"],
+    "puhua": ["puhun", "puhut", "puhuu", "puhumme", "puhutte", "puhuvat"],
+    "kirjoitta": ["kirjoitan", "kirjoitat", "kirjoittaa", "kirjoitamme", "kirjoitate", "kirjoittavat"]
 };
 
-var myVerb = new Verb("rakastaa", "I");
-var myConjugatedVerb = new Conjugation(myVerb, "Minä", "present");
+// move functions to another file
+function randomizeConjugatedVerb(){
+    const randomPronoun = pronouns[Math.floor(Math.random()*pronouns.length)];
 
-console.log(myVerb);
-console.log(myVerb.getInfinitive());
-console.log(myVerb.getType());
+    const keys = Object.keys(verbsPresent);
+    const index = Math.floor(Math.random() * keys.length);
+    const randomInfinitive = keys[index];
 
-console.log("----------------------------");
+    const randomConjugatedVerb = new Conjugation(new Verb(randomInfinitive, "I"), randomPronoun, "present");
+    
 
-console.log(myConjugatedVerb.getVerb());
-console.log(myConjugatedVerb.getVerb().getInfinitive());
-console.log(myConjugatedVerb.getVerb().getType());
-console.log(myConjugatedVerb.getPronoun());
-console.log(myConjugatedVerb.getTense());
-console.log(myConjugatedVerb.getPronounIndex());
-console.log(myConjugatedVerb.getPronoun() + " " + myConjugatedVerb.conjugatePresent());
+    return randomConjugatedVerb;
+};
 
-var syoda = new Verb("syödä", "I");
-var syodaPresent = new Conjugation(syoda, "Sinä", "present");
+function printRandomconjugatedVerbs(amount){
+    var i;
+    for (i = 0; i < amount; i++) { 
+        var rv1 = randomizeConjugatedVerb();
+        console.log(rv1.getPronoun() + " " + rv1.conjugatePresent());
+    }
+};
 
-console.log(syodaPresent.getPronoun() + " " + syodaPresent.conjugatePresent());
+function verbConjugationMatch(promptConjugatedVerb, userVerbInput){
+       
+        if (promptConjugatedVerb.conjugatePresent() == userVerbInput){
+            console.log("Verb Match!");
+            return true;
+        }
+        else{
+            console.log("Wrong verb!");
+            return false;
+    }
+};
 
-var randomVerb = verbsPresent[Math.floor(Math.random()*verbsPresent.length)];
-var randomPronoun = pronouns[Math.floor(Math.random()*pronouns.length)];
 
-//var randomConjugatedVerb = new Conjugation(randomVerb, randomPronoun, "present");
-//console.log(randomConjugatedVerb.getPronoun() + " " + randomConjugatedVerb.conjugatePresent());
+exerciseVerb = randomizeConjugatedVerb();
+exerciseVerb2 = randomizeConjugatedVerb();
+exerciseVerb3 = randomizeConjugatedVerb();
+exerciseVerb4 = randomizeConjugatedVerb();
 
-console.log(randomVerb);
-console.log(verbsPresent["rakastaa"]);
+const exercises = [
+{ prompt: "Infinitive: " + exerciseVerb.getVerb().getInfinitive() + "  Pronoun: " + exerciseVerb.getPronoun() + " \n type answer: ", correctAnswer: exerciseVerb.conjugatePresent()},
+{ prompt: "Infinitive: " + exerciseVerb2.getVerb().getInfinitive() + "  Pronoun: " + exerciseVerb2.getPronoun() + " \n type answer: ", correctAnswer: exerciseVerb2.conjugatePresent() },
+{ prompt: "Infinitive: " + exerciseVerb3.getVerb().getInfinitive() + "  Pronoun: " + exerciseVerb3.getPronoun() + " \n type answer: ", correctAnswer: exerciseVerb3.conjugatePresent() },
+{ prompt: "Infinitive: " + exerciseVerb4.getVerb().getInfinitive() + "  Pronoun: " + exerciseVerb4.getPronoun() + " \n type answer: ", correctAnswer: exerciseVerb4.conjugatePresent() }
 
-//how to select a random key from a dictionary from an index number??? 
+];
 
+function runExercise(index) {
+    rl.question(exercises[index].prompt, (answer) => {
+    if (answer !== exercises[index].correctAnswer) {
+        console.log("Oh no... Try again!");
+        runExercise(index);
+    }
+    else if (index === exercises.length - 1) {
+        console.log("Awwww yissss! You're done!")
+        rl.close();
+    } 
+    else {
+        console.log("Awwww yissss! To the next question!")
+        runExercise(index + 1);
+    }
+});
+}
+runExercise(0);
