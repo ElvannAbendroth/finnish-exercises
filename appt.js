@@ -8,7 +8,6 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-
 // move functions to another file
 function randomizeConjugatedVerb(){
     const randomPronoun = pronouns[Math.floor(Math.random()*pronouns.length)];
@@ -18,17 +17,8 @@ function randomizeConjugatedVerb(){
     const randomInfinitive = keys[index];
 
     const randomConjugatedVerb = new Conjugation(new Verb(randomInfinitive, "I"), randomPronoun, "present");
-    
 
     return randomConjugatedVerb;
-};
-
-function printRandomConjugatedVerbs(amount){
-    var i;
-    for (i = 0; i < amount; i++) { 
-        var rv1 = randomizeConjugatedVerb();
-        console.log(rv1.getPronoun() + " " + rv1.conjugatePresent());
-    }
 };
 
 //returns an array of random conjugated verbs of an {amount} of elements
