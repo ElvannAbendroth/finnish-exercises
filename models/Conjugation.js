@@ -2,8 +2,9 @@ const Verb = require('./Verb');
 
 const pronouns = ["Minä", "Sinä", "Hän", "Me", "Te", "He"];
 const verbsPresent = {
-    "rakastaa": ["rakastan", "rakastat", "rakastaa", "rakastamme", "rakastatte", "rakastavat"]
-}
+    "rakastaa": ["rakastan", "rakastat", "rakastaa", "rakastamme", "rakastatte", "rakastavat"],
+    "syödä": ["syön", "syöt", "syö", "syömme", "syötte", "syövat"]
+};
 
 
 class Conjugation {

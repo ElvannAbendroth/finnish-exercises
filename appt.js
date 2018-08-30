@@ -18,5 +18,11 @@ console.log(myConjugatedVerb.getTense());
 console.log(myConjugatedVerb.getPronounIndex());
 console.log(myConjugatedVerb.getPronoun() + " " + myConjugatedVerb.conjugatePresent());
 
+var syoda = new Verb("syödä", "I");
+var syodaPresent = new Conjugation(syoda, "Sinä", "present");
 
+console.log(syodaPresent.getPronoun() + " " + syodaPresent.conjugatePresent());
+
+//var randomVerb = new Verb(verbsPresent[Math.floor(Math.random()*verbsPresent.length)], "I")
+//console.log(randomVerb.getPronoun() + " " + randomVerb.conjugatePresent());
 
