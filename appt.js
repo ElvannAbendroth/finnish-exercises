@@ -48,13 +48,12 @@ function verbConjugationMatch(promptConjugatedVerb, userVerbInput){
 const numberOfExercises = 4;
 const verbExercises = (randomConjugatedVerbsArray(numberOfExercises));
 
-const exercises = [
-{ prompt: "Infinitive: " + verbExercises[0].getVerb().getInfinitive() + "  Pronoun: " + verbExercises[0].getPronoun() + " \n type answer: ", correctAnswer: verbExercises[0].conjugatePresent()},
-{ prompt: "Infinitive: " + verbExercises[1].getVerb().getInfinitive() + "  Pronoun: " + verbExercises[1].getPronoun() + " \n type answer: ", correctAnswer: verbExercises[1].conjugatePresent() },
-{ prompt: "Infinitive: " + verbExercises[2].getVerb().getInfinitive() + "  Pronoun: " + verbExercises[2].getPronoun() + " \n type answer: ", correctAnswer: verbExercises[2].conjugatePresent() },
-{ prompt: "Infinitive: " + verbExercises[3].getVerb().getInfinitive() + "  Pronoun: " + verbExercises[3].getPronoun() + " \n type answer: ", correctAnswer: verbExercises[3].conjugatePresent() }
-
-];
+const exercises = [];
+for (let i = 0; i < numberOfExercises; i++) {
+    exercises.push({ 
+        prompt: "Infinitive: " + verbExercises[i].getVerb().getInfinitive() + "  Pronoun: " + verbExercises[i].getPronoun() + " \n type answer: ", correctAnswer: verbExercises[i].conjugatePresent()
+    });
+}
 
 function runExercise(index) {
     rl.question(exercises[index].prompt, (answer) => {
