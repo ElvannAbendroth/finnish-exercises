@@ -1,11 +1,6 @@
 const Verb = require('./Verb');
-
-const pronouns = ["Minä", "Sinä", "Hän", "Me", "Te", "He"];
-const verbsPresent = {
-    "rakastaa": ["rakastan", "rakastat", "rakastaa", "rakastamme", "rakastatte", "rakastavat"],
-    "syödä": ["syön", "syöt", "syö", "syömme", "syötte", "syövat"]
-};
-
+const pronouns = require('./PronounEnum');
+const verbsPresent = require('./verbData');
 
 class Conjugation {
     constructor(verb, pronoun, tense) {
@@ -45,12 +40,12 @@ class Conjugation {
     }
 
     
-
     conjugatePresent(){
 
         return verbsPresent[this.getVerb().getInfinitive()][this.getPronounIndex()];
 
     }
+
 }
 
 module.exports = Conjugation;
