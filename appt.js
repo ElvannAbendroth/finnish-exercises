@@ -1,4 +1,5 @@
-const Verb = require('./models/Verb');
+const NewVerb = require('./models/Verb');
+const Question = require('./models/Question');
 const pronouns = require('./models/PronounEnum');
 const verbsPresent = require('./models/verbData');
 const readline = require('readline')
@@ -7,60 +8,34 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-// move functions to another file
-function randomizeVerb(){
-    const randomPronoun = pronouns[Math.floor(Math.random()*pronouns.length)];
+function buildRandomQuestion() {
+    const randomVerbIndex = Math.floor(Math.random() * verbsPresent.length);
+    const verb = new NewVerb(verbsPresent[randomVerbIndex]);
+    const randomPronounIndex = Math.floor(Math.random() * pronouns.length);
+    const pronoun = pronouns[randomPronounIndex];
+    return new Question(verb, "present", pronoun);
+}
 
-    const keys = Object.keys(verbsPresent);
-    const index = Math.floor(Math.random() * keys.length);
-    const randomInfinitive = keys[index];
-
-    const randomVerb = new Verb(randomInfinitive, "I", randomPronoun, "present");
-
-    return randomVerb;
-};
-
-//returns an array of random conjugated verbs of an {amount} of elements
-function randomVerbsArray(amount){
+function buildRandomExercise(amount) {
     var i;
     var array = [];
     for (i = 0; i < amount; i++) { 
-        var randomVerb = randomizeVerb();
-        //console.log(randomConjugatedVerb);
+        var randomVerb = buildRandomQuestion();
         array.push(randomVerb);
     }
     return array;
-};
-
-function verbConjugationMatch(promptVerb, userVerbInput){
-       
-        if (promptVerb.conjugatePresent() == userVerbInput){
-            console.log("Verb Match!");
-            return true;
-        }
-        else{
-            console.log("Wrong verb!");
-            return false;
-    }
-};
-
-const numberOfExercises = 4;
-const verbExercises = (randomVerbsArray(numberOfExercises));
-
-const exercises = [];
-for (let i = 0; i < numberOfExercises; i++) {
-    exercises.push({ 
-        prompt: "Infinitive: " + verbExercises[i].getInfinitive() + "  Pronoun: " + verbExercises[i].getPronoun() + " \n type answer: ", correctAnswer: verbExercises[i].conjugatePresent()
-    });
 }
 
+const numberOfExercises = 4;
+const verbExercises = buildRandomExercise(numberOfExercises);
+
 function runExercise(index) {
-    rl.question(exercises[index].prompt, (answer) => {
-    if (answer !== exercises[index].correctAnswer) {
+    rl.question(verbExercises[index].getPrompt(), (answer) => {
+    if (answer !== verbExercises[index].getCorrectAnswer()) {
         console.log("Oh no... Try again!");
         runExercise(index);
     }
-    else if (index === exercises.length - 1) {
+    else if (index === verbExercises.length - 1) {
         console.log("Awwww yissss! You're done!")
         rl.close();
     } 

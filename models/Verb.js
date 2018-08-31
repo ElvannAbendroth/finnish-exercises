@@ -1,55 +1,28 @@
-const pronouns = require('./PronounEnum');
-const verbsPresent = require('./verbData');
+class NewVerb {
 
-class Verb {
-    constructor(infinitive, type, pronoun, tense) {
-        this.infinitive = infinitive;
-        this.type = type;
-        this.pronoun = pronoun;
-        this.tense = tense;
-        //this.translation = translation;
+    constructor(formsList) {
+        this.infinitive = formsList[0];
+    
+        this.conjugations = {
+            "present": {
+                "minä": formsList[1],
+                "sinä": formsList[2],
+                "hän": formsList[3],
+                "me": formsList[4],
+                "te": formsList[5],
+                "he": formsList[6],
+            }
+        };
     }
 
     getInfinitive() {
         return this.infinitive;
     }
 
-    getType() {
-        return this.type;
+    getConjugation(tense, pronoun) {
+        return this.conjugations[tense][pronoun];
     }
 
-    getPronoun() {
-        return this.pronoun;
-    }
-
-    getTense() {
-        return this.tense;
-    }
-    
-    getPronounIndex(){
-        
-        var i = 0;
-        var pronounIndex;
-        pronouns.forEach(element => {
-            if (element == this.pronoun){
-                pronounIndex = i;
-            }
-            else {
-                i = ++i;
-            }
-
-        });
-
-        return pronounIndex;
-
-    }
-
-    
-    conjugatePresent(){
-
-        return verbsPresent[this.getInfinitive()][this.getPronounIndex()];
-
-    }
 }
 
-module.exports = Verb;
+module.exports = NewVerb;
