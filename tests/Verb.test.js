@@ -1,5 +1,5 @@
 const Verb = require('../models/Verb');
-const pronouns = require('../models/PronounEnum');
+const pronouns = require('../models/pronounEnum');
 const verbData = require('../models/verbData');
 
 var myVerb = new Verb("rakastaa", "I", "Minä", "present");
