@@ -14,17 +14,6 @@ function buildRandomQuestion() {
   return new Question(verb, "present", pronoun);
 }
 
-function buildRandomExercise(amount) {
-  var i;
-  var array = [];
-  for (i = 0; i < amount; i++) { 
-      var randomVerb = buildRandomQuestion();
-      array.push(randomVerb);
-  }
-  return array;
-}
-
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -33,12 +22,8 @@ router.get('/', function(req, res, next) {
 
 /* GET List of Questions */
 
-router.get('/listofquestions', function(req, res, next) {
-  const numberOfExercises = 4;
-  const verbExercises = buildRandomExercise(numberOfExercises);
-  
-  res.send(verbExercises);
-  
+router.get('/question', function(req, res, next) {
+  res.send(buildRandomQuestion());  
 });
 
 
