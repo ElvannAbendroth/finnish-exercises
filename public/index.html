@@ -1,14 +1,40 @@
 <html>
 
 <head>
-  <title>Express</title>
+  <title>Index</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+  
+    function fetchListOfQuestions(){
+      $.get('/listofquestions', function(data, status) {
+        /* this code is executed when get requests to my-url returns with a response */
+        $('#listOfQuestions').html('');
+        for (let i = 0; i < data.length; i++) {
+          const pronoun = data[i].pronoun;
+          const conjugatedVerb = data[i].verb.conjugations[data[i].tense][pronoun];
+          $('#listOfQuestions').html($('#listOfQuestions').html() +'<li>' + pronoun + ' ' + conjugatedVerb + '</li>');
+        } 
+      });
+    }
+
+
+  $( document ).ready(function() {
+      /* This code gets executed when the page loads */
+      console.log("It works!");
+      fetchListOfQuestions();
+  });
+
+  </script>
 </head>
 
 <body>
-  <h1>Express</h1>
-  <p>Welcome to Express</p>
-  <p>Hello</p>
+
+  <h1>List of Questions</h1>
+  <ul id="listOfQuestions">
+    <li>...</li>
+  </ul>
+
 </body>
 
 </html>
