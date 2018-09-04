@@ -26,6 +26,12 @@ router.get('/question', function(req, res, next) {
   res.send(buildRandomQuestion());  
 });
 
+/* GET blank */
+
+router.get('/blank', function(req, res, next) {
+  res.redirect('blank.html');
+  res.send(buildRandomQuestion()); 
+});
 
 
 
