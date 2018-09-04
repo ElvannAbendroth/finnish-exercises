@@ -30,7 +30,7 @@
    <link rel="stylesheet" href="/stylesheets/style.css">
 
    <script>
-    window.elvann = {};
+    window.elvann = { };
   
     function fetchQuestion(){
       $.get('/question', function(data, status) {
@@ -46,7 +46,7 @@
         $('#answerInput').val('');
         $('#answerHelp').html("Translation: " + translation);
 
-        window.elvann.conjugatedVerb = conjugatedVerb; 
+        window.elvann.conjugatedVerb = conjugatedVerb;
       });
     }
 
@@ -198,7 +198,7 @@
             <form id="answerForm">
                 <div class="form-group">
                     <h6 id="questionPrompt">[pronoun] [infinitive]</h6>
-                    <input type="text" class="form-control" id="answerInput" aria-describedby="answerHelp" placeholder="[infinitive]">
+                    <input autocomplete="off" type="text" class="form-control" id="answerInput" aria-describedby="answerHelp" placeholder="[infinitive]">
                     <small id="answerHelp" class="form-text text-muted">[verb translation]</small>
                 </div>
                 <button type="submit" class="btn btn-primary">Send</button>
