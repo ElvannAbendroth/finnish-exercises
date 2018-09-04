@@ -30,6 +30,7 @@
    <link rel="stylesheet" href="/stylesheets/style.css">
 
    <script>
+    window.elvann = {};
   
     function fetchQuestion(){
       $.get('/question', function(data, status) {
@@ -42,8 +43,10 @@
         $('#questionPrompt').html(pronoun + ' [' + infinitive + ']');
         $('#infinitive').html(infinitive);
         $("#answerInput").attr("placeholder", infinitive);
+        $('#answerInput').val('');
         $('#answerHelp').html("Translation: " + translation);
-       
+
+        window.elvann.conjugatedVerb = conjugatedVerb; 
       });
     }
 
@@ -56,6 +59,17 @@
     $('#breadTitle').html(pageTitle);
     $('#pageTitle').html(pageTitle);
     
+    $('#answerForm').submit((event) => {
+      event.preventDefault();
+      const answer = $('#answerInput').val();
+      const isCorrect = answer === window.elvann.conjugatedVerb;
+      if (isCorrect) {
+        alert('Answer was correct! Yay! Try the next one!');
+        fetchQuestion();
+      } else {
+        alert('Answer was incorrect! Try again!');
+      }
+    });   
     
   });
 
@@ -181,7 +195,7 @@
             <h1 id="pageTitle">Finnish Exercises</h1>
             <hr>
             <p>Answer each question with the proper conjugated verb.</p>
-            <form>
+            <form id="answerForm">
                 <div class="form-group">
                     <h6 id="questionPrompt">[pronoun] [infinitive]</h6>
                     <input type="text" class="form-control" id="answerInput" aria-describedby="answerHelp" placeholder="[infinitive]">
