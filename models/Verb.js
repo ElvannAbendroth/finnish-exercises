@@ -1,16 +1,17 @@
-class NewVerb {
+class Verb {
 
     constructor(formsList) {
         this.infinitive = formsList[0];
+        this.translation = formsList[1];
     
         this.conjugations = {
             "present": {
-                "minä": formsList[1],
-                "sinä": formsList[2],
-                "hän": formsList[3],
-                "me": formsList[4],
-                "te": formsList[5],
-                "he": formsList[6],
+                "minä": formsList[2],
+                "sinä": formsList[3],
+                "hän": formsList[4],
+                "me": formsList[5],
+                "te": formsList[6],
+                "he": formsList[7],
             }
         };
     }
@@ -25,4 +26,4 @@ class NewVerb {
 
 }
 
-module.exports = NewVerb;
+module.exports = Verb;

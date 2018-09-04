@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const NewVerb = require('../models/Verb');
+const Verb = require('../models/Verb');
 const Question = require('../models/Question');
 const pronouns = require('../models/PronounEnum');
 const verbsPresent = require('../models/verbData');
@@ -8,7 +8,7 @@ const verbsPresent = require('../models/verbData');
 //Wild functions
 function buildRandomQuestion() {
   const randomVerbIndex = Math.floor(Math.random() * verbsPresent.length);
-  const verb = new NewVerb(verbsPresent[randomVerbIndex]);
+  const verb = new Verb(verbsPresent[randomVerbIndex]);
   const randomPronounIndex = Math.floor(Math.random() * pronouns.length);
   const pronoun = pronouns[randomPronounIndex];
   return new Question(verb, "present", pronoun);
@@ -30,7 +30,7 @@ router.get('/question', function(req, res, next) {
 
 router.get('/blank', function(req, res, next) {
   res.redirect('blank.html');
-  res.send(buildRandomQuestion()); 
+  //res.send(buildRandomQuestion()); 
 });
 
 
