@@ -31,6 +31,10 @@
 
    <script>
     window.elvann = { };
+    window.elvann.missed = 0;
+    window.elvann.totalExercises = 0;
+    window.elvann.success = 0;
+    
   
     function fetchQuestion(){
       $.get('/question', function(data, status) {
@@ -47,6 +51,8 @@
         $('#answerHelp').html("Translation: " + translation);
 
         window.elvann.conjugatedVerb = conjugatedVerb;
+        window.elvann.noMistake = 0; // resets every round
+        
       });
     }
 
@@ -58,6 +64,9 @@
     const pageTitle = "Finnish Exercises";
     $('#breadTitle').html(pageTitle);
     $('#pageTitle').html(pageTitle);
+    $('#missed').html('Missed: ' + window.elvann.missed);
+    $('#totalExercises').html('Total Exercises: ' + window.elvann.totalExercises);
+    $('#success').html('Success: ' + window.elvann.success);
     
     $('#answerForm').submit((event) => {
       event.preventDefault();
@@ -66,9 +75,27 @@
       if (isCorrect) {
         alert('Answer was correct! Yay! Try the next one!');
         fetchQuestion();
+        window.elvann.totalExercises += 1;
+        $('#totalExercises').html('Total Exercises: ' + window.elvann.totalExercises);
+        $('#answerMissed').html('');
+        if (window.elvann.noMistake < 1){
+          window.elvann.success += 1;
+        $('#success').html('Success: ' + window.elvann.success);
+        }
       } else {
         alert('Answer was incorrect! Try again!');
+        if (window.elvann.noMistake < 1){
+          window.elvann.missed +=1;
+          $('#missed').html('Missed: ' + window.elvann.missed);
+        } if (window.elvann.noMistake >= 1){
+          $('#answerMissed').html('Answer: ' + window.elvann.conjugatedVerb);
+
+        }
+        window.elvann.noMistake += 1;
+
       }
+      
+
     });   
     
   });
@@ -183,29 +210,44 @@
 
         <div class="container-fluid">
 
-            <!-- Breadcrumbs-->
-            <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="index.html">Dashboard</a>
-            </li>
-            <li id="breadTitle" class="breadcrumb-item active">Blank Page</li>
-            </ol>
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+              <a href="index.html">Dashboard</a>
+          </li>
+          <li id="breadTitle" class="breadcrumb-item active">Blank Page</li>
+          </ol>
 
-            <!-- Page Content -->
-            <h1 id="pageTitle">Finnish Exercises</h1>
-            <hr>
-            <p>Answer each question with the proper conjugated verb.</p>
-            <form id="answerForm">
-                <div class="form-group">
-                    <h6 id="questionPrompt">[pronoun] [infinitive]</h6>
-                    <input autocomplete="off" type="text" class="form-control" id="answerInput" aria-describedby="answerHelp" placeholder="[infinitive]">
-                    <small id="answerHelp" class="form-text text-muted">[verb translation]</small>
-                </div>
-                <button type="submit" class="btn btn-primary">Send</button>
-            </form>
-           
-
+          <!-- Page Content -->
+          <h1 id="pageTitle">Finnish Exercises</h1>
+          <hr>
+          <p>Answer each question with the proper conjugated verb.</p>
+          <form id="answerForm">
+              <div class="form-group">
+                  <h6 id="questionPrompt">[pronoun] [infinitive]</h6>
+                  <p id="answerMissed"></p>
+                  <input autocomplete="off" type="text" class="form-control" id="answerInput" aria-describedby="answerHelp" placeholder="[infinitive]">
+                  <small id="answerHelp" class="form-text text-muted">[verb translation]</small>
+              </div>
+              <button type="submit" class="btn btn-primary">Send</button>
+          </form>
+          <br>
+          
+          <div class="row">
+              <div class="col col-lg">
+                  <p id="success" class="alert alert-success" type="success">Success:</p>
+              </div>
+              <div class="col">
+                  <p id="missed" class="alert alert-danger" type="danger">Missed:</p>
+              </div>
+              <div class="col">
+                <p id="totalExercises" class="alert alert-primary" type="primary">Total exercises: </p>
+              </div>
+          </div>
+          
+          <p>minä, sinä, hän, me, te, he</p>
         </div>
+
         <!-- /.container-fluid -->
 
         <!-- Sticky Footer -->

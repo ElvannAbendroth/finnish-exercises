@@ -4,7 +4,9 @@ const verbsPresent = [
     ["haluta", "to want", "haluan", "haluat", "haluaa", "haluamme", "haluatte", "haluavat"],
     ["olla", "to be", "olen", "olet", "on", "olemme", "olette", "ovat"],
     ["puhua", "to speak", "puhun", "puhut", "puhuu", "puhumme", "puhutte", "puhuvat"],
-    ["kirjoittaa", "to write", "kirjoitan", "kirjoitat", "kirjoittaa", "kirjoitamme", "kirjoitatte", "kirjoittavat"]
+    ["kirjoittaa", "to write", "kirjoitan", "kirjoitat", "kirjoittaa", "kirjoitamme", "kirjoitatte", "kirjoittavat"],
+    ["tehdä", "to make", "teen", "teet", "tekee", "teemme", "teette", "tekevät"],
+    ["ottaa", "to take", "otan", "otat", "ottaa", "otamme", "otatte", "ottavat"]
 ];
 
 module.exports = verbsPresent;
