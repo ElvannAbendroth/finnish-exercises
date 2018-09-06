@@ -51,7 +51,7 @@
         $('#answerHelp').html("Translation: " + translation);
 
         window.elvann.conjugatedVerb = conjugatedVerb;
-        window.elvann.noMistake = 0; // resets every round
+        window.elvann.attemptNumber = 1; // resets every round
         
       });
     }
@@ -83,19 +83,19 @@
 
         $('#totalExercises').html('Total Exercises: ' + window.elvann.totalExercises);
         $('#answerMissed').html('');
-        if (window.elvann.noMistake < 1){
+        if (window.elvann.attemptNumber === 1){
           window.elvann.success += 1;
         }
         updateStats(window.elvann.success, window.elvann.missed, window.elvann.totalExercises);
       } else {
         alert('Answer was incorrect! Try again!');
-        if (window.elvann.noMistake < 1){
-          window.elvann.missed +=1;
+        if (window.elvann.attemptNumber === 1){
+          window.elvann.missed += 1;
           updateStats(window.elvann.success, window.elvann.missed, window.elvann.totalExercises);
-        } if (window.elvann.noMistake >= 1){
+        } else {
           $('#answerMissed').html('Answer: ' + window.elvann.conjugatedVerb);
         }
-        window.elvann.noMistake += 1;
+        window.elvann.attemptNumber += 1;
       }
       
 
