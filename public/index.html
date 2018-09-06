@@ -56,6 +56,12 @@
       });
     }
 
+    function updateStats(numberCorrect, numberMissed, numberTotal) {
+      $('#success').html('<i class="fa fa-check"></i>' + ' Success: ' + numberCorrect);
+      $('#missed').html('<i class="fa fa-times"></i>' + ' Missed: ' + numberMissed);
+      $('#totalExercises').html('<i class="fa fa-heart"></i>' + ' Total: ' + numberTotal);
+    }
+
   $( document ).ready(function() {
     /* This code gets executed when the page loads */
     console.log("It works!");
@@ -64,9 +70,7 @@
     const pageTitle = "Verbi Harjoituksia";
     $('#breadTitle').html(pageTitle);
     $('#pageTitle').html(pageTitle);
-    $('#missed').html('<i class="fa fa-times"></i>' + ' Missed: ' + window.elvann.missed);
-    $('#totalExercises').html('<i class="fa fa-heart"></i>' + ' Total: ' + window.elvann.totalExercises);
-    $('#success').html('<i class="fa fa-check"></i>' + ' Success: ' + window.elvann.success);
+    updateStats(window.elvann.success, window.elvann.missed, window.elvann.totalExercises);
     
     $('#answerForm').submit((event) => {
       event.preventDefault();
@@ -76,23 +80,22 @@
         alert('Answer was correct! Yay! Try the next one!');
         fetchQuestion();
         window.elvann.totalExercises += 1;
+
         $('#totalExercises').html('Total Exercises: ' + window.elvann.totalExercises);
         $('#answerMissed').html('');
         if (window.elvann.noMistake < 1){
           window.elvann.success += 1;
-        $('#success').html('Success: ' + window.elvann.success);
         }
+        updateStats(window.elvann.success, window.elvann.missed, window.elvann.totalExercises);
       } else {
         alert('Answer was incorrect! Try again!');
         if (window.elvann.noMistake < 1){
           window.elvann.missed +=1;
-          $('#missed').html('Missed: ' + window.elvann.missed);
+          updateStats(window.elvann.success, window.elvann.missed, window.elvann.totalExercises);
         } if (window.elvann.noMistake >= 1){
           $('#answerMissed').html('Answer: ' + window.elvann.conjugatedVerb);
-
         }
         window.elvann.noMistake += 1;
-
       }
       
 
