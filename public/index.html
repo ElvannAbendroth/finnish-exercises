@@ -56,10 +56,18 @@
       });
     }
 
-    function updateStats(numberCorrect, numberMissed, numberTotal) {
+    function updateStats(numberCorrect, numberMissed) {
       $('#success').html('<i class="fa fa-check"></i>' + ' Success: ' + numberCorrect);
       $('#missed').html('<i class="fa fa-times"></i>' + ' Missed: ' + numberMissed);
-      $('#totalExercises').html('<i class="fa fa-heart"></i>' + ' Total: ' + numberTotal);
+      $('#totalExercises').html('<i class="fa fa-heart"></i>' + ' Total: ' + (numberCorrect + numberMissed));
+    }
+
+    function revealCorrectAnswer(toggle) {
+      if (toggle) {
+        $('#answerMissed').html('Answer: ' + window.elvann.conjugatedVerb);
+      } else {
+        $('#answerMissed').html('');
+      }
     }
 
   $( document ).ready(function() {
@@ -70,7 +78,7 @@
     const pageTitle = "Verbi Harjoituksia";
     $('#breadTitle').html(pageTitle);
     $('#pageTitle').html(pageTitle);
-    updateStats(window.elvann.success, window.elvann.missed, window.elvann.totalExercises);
+    updateStats(window.elvann.success, window.elvann.missed);
     
     $('#answerForm').submit((event) => {
       event.preventDefault();
@@ -79,26 +87,20 @@
       if (isCorrect) {
         alert('Answer was correct! Yay! Try the next one!');
         fetchQuestion();
-        window.elvann.totalExercises += 1;
-
-        $('#totalExercises').html('Total Exercises: ' + window.elvann.totalExercises);
-        $('#answerMissed').html('');
+        revealCorrectAnswer(false);
         if (window.elvann.attemptNumber === 1){
           window.elvann.success += 1;
         }
-        updateStats(window.elvann.success, window.elvann.missed, window.elvann.totalExercises);
       } else {
         alert('Answer was incorrect! Try again!');
         if (window.elvann.attemptNumber === 1){
           window.elvann.missed += 1;
-          updateStats(window.elvann.success, window.elvann.missed, window.elvann.totalExercises);
         } else {
-          $('#answerMissed').html('Answer: ' + window.elvann.conjugatedVerb);
+          revealCorrectAnswer(true);
         }
         window.elvann.attemptNumber += 1;
       }
-      
-
+      updateStats(window.elvann.success, window.elvann.missed);
     });   
     
   });
