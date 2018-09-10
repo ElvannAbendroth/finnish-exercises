@@ -33,6 +33,13 @@ router.get('/blank', function(req, res, next) {
   //res.send(buildRandomQuestion()); 
 });
 
+/* GET About */
+
+router.get('/about', function(req, res, next) {
+  res.redirect('about.html');
+  //res.send(buildRandomQuestion()); 
+});
+
 
 
 
