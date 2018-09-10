@@ -64,9 +64,9 @@
 
   $( document ).ready(function() {
     /* This code gets executed when the page loads */
-    $("#navbar-frame").load("/navbar.html");
-    $("#sidebar-frame").load("/sidebar.html");
-    $("#logout-modal").load("/logout-modal.html");
+    $("#sidebar-frame").load("/components/sidebar.html");
+    $("#navbar-frame").load("/components/navbar.html");  
+    $("#logout-modal").load("/components/logout-modal.html");
 
     fetchQuestion();
 
