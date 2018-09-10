@@ -37,9 +37,10 @@
     $("#sidebar-frame").load("/components/sidebar.html");
     $("#navbar-frame").load("/components/navbar.html");  
     $("#logout-modal").load("/components/logout-modal.html");
+    $("#footer-frame").load("/components/footer.html");
 
     
-    const pageTitle = "About";
+    const pageTitle = "Present Conjugation";
     $('#breadTitle').html(pageTitle);
     $('#pageTitle').html(pageTitle);
 
@@ -69,29 +70,22 @@
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
           <li class="breadcrumb-item">
-              <a href="index.html">Dashboard</a>
+              <a href="/">Home</a>
           </li>
-          <li id="breadTitle" class="breadcrumb-item active">[page title]</li>
+          <li id="breadTitle" class="breadcrumb-item active"></li>
           </ol>
 
           <!-- Page Content -->
-          <h1 id="pageTitle">[page title]</h1>
+          <h1 id="pageTitle"></h1>
           <hr>
-          <p>info about the project</p>
+          <p>I'm a blank page</p>
           
           
         </div>
 
         <!-- /.container-fluid -->
 
-        <!-- Sticky Footer -->
-        <footer class="sticky-footer">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright © Your Website 2018</span>
-            </div>
-          </div>
-        </footer>
+        <div id="footer-frame"></div>
 
       </div>
       <!-- /.content-wrapper -->

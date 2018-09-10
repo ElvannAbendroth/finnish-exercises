@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Blank Page</title>
+    <title>Verbi Harjoituksia</title>
 
     <!-- Bootstrap core CSS-->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -30,74 +30,20 @@
    <link rel="stylesheet" href="/stylesheets/style.css">
 
    <script>
-    window.elvann = { };
-    window.elvann.missed = 0;
-    window.elvann.totalExercises = 0;
-    window.elvann.success = 0;
     
-  
-    function fetchQuestion(){
-      $.get('/question', function(data, status) {
-        /* this code is executed when get requests to my-url returns with a response */
-        const pronoun = data.pronoun;
-        const conjugatedVerb = data.verb.conjugations[data.tense][pronoun];
-        const infinitive = data.verb.infinitive;
-        const translation = data.verb.translation;
-        
-        $('#questionPrompt').html(pronoun + ' [' + infinitive + ']');
-        $('#infinitive').html(infinitive);
-        $("#answerInput").attr("placeholder", infinitive);
-        $('#answerInput').val('');
-        $('#answerHelp').html("Translation: " + translation);
-
-        window.elvann.conjugatedVerb = conjugatedVerb;
-        window.elvann.noMistake = 0; // resets every round
-        
-      });
-    }
-
+    
   $( document ).ready(function() {
     /* This code gets executed when the page loads */
-    console.log("It works!");
-    fetchQuestion();
+    $("#sidebar-frame").load("/components/sidebar.html");
+    $("#navbar-frame").load("/components/navbar.html");  
+    $("#logout-modal").load("/components/logout-modal.html");
+    $("#footer-frame").load("/components/footer.html");
 
-    const pageTitle = "Finnish Exercises";
+    
+    const pageTitle = "Blank";
     $('#breadTitle').html(pageTitle);
     $('#pageTitle').html(pageTitle);
-    $('#missed').html('Missed: ' + window.elvann.missed);
-    $('#totalExercises').html('Total Exercises: ' + window.elvann.totalExercises);
-    $('#success').html('Success: ' + window.elvann.success);
-    
-    $('#answerForm').submit((event) => {
-      event.preventDefault();
-      const answer = $('#answerInput').val();
-      const isCorrect = answer === window.elvann.conjugatedVerb;
-      if (isCorrect) {
-        alert('Answer was correct! Yay! Try the next one!');
-        fetchQuestion();
-        window.elvann.totalExercises += 1;
-        $('#totalExercises').html('Total Exercises: ' + window.elvann.totalExercises);
-        $('#answerMissed').html('');
-        if (window.elvann.noMistake < 1){
-          window.elvann.success += 1;
-        $('#success').html('Success: ' + window.elvann.success);
-        }
-      } else {
-        alert('Answer was incorrect! Try again!');
-        if (window.elvann.noMistake < 1){
-          window.elvann.missed +=1;
-          $('#missed').html('Missed: ' + window.elvann.missed);
-        } if (window.elvann.noMistake >= 1){
-          $('#answerMissed').html('Answer: ' + window.elvann.conjugatedVerb);
 
-        }
-        window.elvann.noMistake += 1;
-
-      }
-      
-
-    });   
-    
   });
 
   </script>
@@ -107,104 +53,15 @@
 
   <body id="page-top">
 
-    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-
-      <a class="navbar-brand mr-1" href="index.html">Start Bootstrap</a>
-
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars"></i>
-      </button>
-
-      <!-- Navbar Search -->
-      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-primary" type="button">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        </div>
-      </form>
-
-      <!-- Navbar -->
-      <ul class="navbar-nav ml-auto ml-md-0">
-        <li class="nav-item dropdown no-arrow mx-1">
-          <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-bell fa-fw"></i>
-            <span class="badge badge-danger">9+</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown no-arrow mx-1">
-          <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-envelope fa-fw"></i>
-            <span class="badge badge-danger">7</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown no-arrow">
-          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-user-circle fa-fw"></i>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="#">Settings</a>
-            <a class="dropdown-item" href="#">Activity Log</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-          </div>
-        </li>
-      </ul>
-
-    </nav>
+    <!--NAVBAR-->
+    <div id="navbar-frame"></div>
+    <!--NAVBAR END-->
 
     <div id="wrapper">
 
-      <!-- Sidebar -->
-      <ul class="sidebar navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
-          </a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Pages</span>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <h6 class="dropdown-header">Login Screens:</h6>
-            <a class="dropdown-item" href="login.html">Login</a>
-            <a class="dropdown-item" href="register.html">Register</a>
-            <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
-            <div class="dropdown-divider"></div>
-            <h6 class="dropdown-header">Other Pages:</h6>
-            <a class="dropdown-item" href="404.html">404 Page</a>
-            <a class="dropdown-item active" href="blank.html">Blank Page</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
-        </li>
-      </ul>
+      <!--NAVBAR-->
+    <div id="sidebar-frame"></div>
+    <!--NAVBAR END-->
 
       <div id="content-wrapper">
 
@@ -213,51 +70,22 @@
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
           <li class="breadcrumb-item">
-              <a href="index.html">Dashboard</a>
+              <a href="/">Home</a>
           </li>
-          <li id="breadTitle" class="breadcrumb-item active">Blank Page</li>
+          <li id="breadTitle" class="breadcrumb-item active"></li>
           </ol>
 
           <!-- Page Content -->
-          <h1 id="pageTitle">Finnish Exercises</h1>
+          <h1 id="pageTitle"></h1>
           <hr>
-          <p>Answer each question with the proper conjugated verb.</p>
-          <form id="answerForm">
-              <div class="form-group">
-                  <h6 id="questionPrompt">[pronoun] [infinitive]</h6>
-                  <p id="answerMissed"></p>
-                  <input autocomplete="off" type="text" class="form-control" id="answerInput" aria-describedby="answerHelp" placeholder="[infinitive]">
-                  <small id="answerHelp" class="form-text text-muted">[verb translation]</small>
-              </div>
-              <button type="submit" class="btn btn-primary">Send</button>
-          </form>
-          <br>
+          <p>I'm a blank page</p>
           
-          <div class="row">
-              <div class="col">
-                  <p id="success" class="alert alert-success" type="success">Success:</p>
-              </div>
-              <div class="col">
-                  <p id="missed" class="alert alert-danger" type="danger">Missed:</p>
-              </div>
-              <div class="col">
-                <p id="totalExercises" class="alert alert-primary" type="primary">Total exercises: </p>
-              </div>
-          </div>
           
-          <p>minä, sinä, hän, me, te, he</p>
         </div>
 
         <!-- /.container-fluid -->
 
-        <!-- Sticky Footer -->
-        <footer class="sticky-footer">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright © Your Website 2018</span>
-            </div>
-          </div>
-        </footer>
+        <div id="footer-frame"></div>
 
       </div>
       <!-- /.content-wrapper -->
@@ -271,23 +99,7 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <div id="logout-modal"></div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
