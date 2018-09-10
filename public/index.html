@@ -51,15 +51,23 @@
         $('#answerHelp').html("Translation: " + translation);
 
         window.elvann.conjugatedVerb = conjugatedVerb;
-        window.elvann.noMistake = 0; // resets every round
+        window.elvann.attemptNumber = 1; // resets every round
         
       });
     }
 
-    function updateStats(numberCorrect, numberMissed, numberTotal) {
+    function updateStats(numberCorrect, numberMissed) {
       $('#success').html('<i class="fa fa-check"></i>' + ' Success: ' + numberCorrect);
       $('#missed').html('<i class="fa fa-times"></i>' + ' Missed: ' + numberMissed);
-      $('#totalExercises').html('<i class="fa fa-heart"></i>' + ' Total: ' + numberTotal);
+      $('#totalExercises').html('<i class="fa fa-heart"></i>' + ' Total: ' + (numberCorrect + numberMissed));
+    }
+
+    function revealCorrectAnswer(toggle) {
+      if (toggle) {
+        $('#answerMissed').html('Answer: ' + window.elvann.conjugatedVerb);
+      } else {
+        $('#answerMissed').html('');
+      }
     }
 
   $( document ).ready(function() {
@@ -69,7 +77,7 @@
     const pageTitle = "Verbi Harjoituksia";
     $('#breadTitle').html(pageTitle);
     $('#pageTitle').html(pageTitle);
-    updateStats(window.elvann.success, window.elvann.missed, window.elvann.totalExercises);
+    updateStats(window.elvann.success, window.elvann.missed);
     
     $('#answerForm').submit((event) => {
       event.preventDefault();
@@ -81,15 +89,12 @@
         $('#alert').html('Answer was correct! Yay! Try the next one!');
         //TODO: create a step that replicates the alert effect of waiting from a user input, and will clear the exercise
         fetchQuestion();
-        window.elvann.totalExercises += 1;
-
-        $('#totalExercises').html('Total Exercises: ' + window.elvann.totalExercises);
-        $('#answerMissed').html('');
-        if (window.elvann.noMistake < 1){
+        revealCorrectAnswer(false);
+        if (window.elvann.attemptNumber === 1){
           window.elvann.success += 1;
         }
-        updateStats(window.elvann.success, window.elvann.missed, window.elvann.totalExercises);
       } else {
+<<<<<<< HEAD
         //alert('Answer was incorrect! Try again!');
         $('#alert').addClass('alert alert-danger')
         $('#alert').html('Answer was incorrect! Try again!');
@@ -101,11 +106,17 @@
           updateStats(window.elvann.success, window.elvann.missed, window.elvann.totalExercises);
         } if (window.elvann.noMistake >= 1){
           $('#answerMissed').html('Answer: ' + window.elvann.conjugatedVerb);
+=======
+        alert('Answer was incorrect! Try again!');
+        if (window.elvann.attemptNumber === 1){
+          window.elvann.missed += 1;
+        } else {
+          revealCorrectAnswer(true);
+>>>>>>> 101522683e66fcc4ef06575115835381ca932a7a
         }
-        window.elvann.noMistake += 1;
+        window.elvann.attemptNumber += 1;
       }
-      
-
+      updateStats(window.elvann.success, window.elvann.missed);
     });   
     
   });
