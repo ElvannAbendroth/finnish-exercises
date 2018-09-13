@@ -3,6 +3,10 @@ String.prototype.replaceAll = function(search, replacement) {
     return target.split(search).join(replacement);
 };
 
-module.exports = function (templateString, title, content) {
-    return templateString.replaceAll('[[TITLE]]', title).replaceAll('[[CONTENT]]', content);
+module.exports = function (templateString, pageUrl, title, meta, content) {
+    return templateString
+        .replaceAll('[[PAGE_URL]]', pageUrl)
+        .replaceAll('[[TITLE]]', title)
+        .replaceAll('[[META]]', meta)
+        .replaceAll('[[CONTENT]]', content);
 }

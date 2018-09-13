@@ -9,8 +9,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>[[TITLE]]</title>
-
     <!-- Bootstrap core CSS-->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
@@ -30,23 +28,23 @@
    <link rel="stylesheet" href="/stylesheets/style.css">
 
    <script>
-    
-    
-  $( document ).ready(function() {
-    /* This code gets executed when the page loads */
-
-    $("#logout-modal").load("/components/logout-modal.html")
-
-
-    // Toggle the side navigation
-    $("#sidebarToggle").click(function(e) {
-      e.preventDefault();
-      $("body").toggleClass("sidebar-toggled");
-      $(".sidebar").toggleClass("toggled");
+    $( document ).ready(function() {
+      /* This code gets executed when the page loads */
+  
+      $("#logout-modal").load("/components/logout-modal.html")
+  
+      // Toggle the side navigation
+      $("#sidebarToggle").click(function(e) {
+        e.preventDefault();
+        $("body").toggleClass("sidebar-toggled");
+        $(".sidebar").toggleClass("toggled");
+      });
     });
-  });
-
   </script>
+
+  <title>[[TITLE]]</title>
+
+  [[META]]
 
   </head>
 
@@ -167,17 +165,16 @@
 
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-              <a href="/">Home</a>
-          </li>
-          <li id="breadTitle" class="breadcrumb-item active"></li>
+            <li class="breadcrumb-item">
+                <a href="/[[PAGE_URL]]">[[TITLE]]</a>
+            </li>
+            <li id="breadTitle" class="breadcrumb-item active"></li>
           </ol>
 
-          <!-- Page Content -->
           <h1 id="pageTitle">[[TITLE]]</h1>
           <hr>
-          <p>[[CONTENT]]</p>
-          
+
+          [[CONTENT]]          
           
         </div>
 

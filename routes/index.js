@@ -43,24 +43,11 @@ router.get('/present-exercises', function(req, res, next) {
   res.sendFile(path.join(__dirname, 'present-exercises.html'));
 });
 
-
-
-router.get('/template-example-1', function(req, res, next) {
+router.get('/pronouns', function(req, res, next) {
   const template = fs.readFileSync(path.join(__dirname, '../view/template.html'), "utf8");
-  console.log(template);
-  const result = templateEngine(template, 'First title', 'First content');
+  const content = fs.readFileSync(path.join(__dirname, '../view/pronouns_content.html'), "utf8");
+  const result = templateEngine(template, 'pronouns', 'Pronouns', '', content);
   res.send(result);
 });
-
-router.get('/template-example-2', function(req, res, next) {
-  const template = fs.readFileSync(path.join(__dirname, '../view/template.html'), "utf8");
-  const result = templateEngine(template, 'Second title', 'Second content');
-  res.send(result);
-});
-
-
-
-
-
 
 module.exports = router;
