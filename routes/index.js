@@ -23,7 +23,6 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-
 /* GET List of Questions */
 
 router.get('/question', function(req, res, next) {
@@ -36,16 +35,24 @@ router.get('/blank', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../public/blank.html'));
 });
 
-
 /* GET present-exercises */
 
 router.get('/present-exercises', function(req, res, next) {
-  res.sendFile(path.join(__dirname, 'present-exercises.html'));
+  const template = fs.readFileSync(path.join(__dirname, '../view/template.html'), "utf8");
+  const content = fs.readFileSync(path.join(__dirname, '../view/present-exercises.html'), "utf8");
+  const result = templateEngine(
+    template, 
+    'present-exercises', 
+    'Present Exercises', 
+    '<script src="js/present-exercises.js"></script>', 
+    content
+  );
+  res.send(result);
 });
 
 router.get('/pronouns', function(req, res, next) {
   const template = fs.readFileSync(path.join(__dirname, '../view/template.html'), "utf8");
-  const content = fs.readFileSync(path.join(__dirname, '../view/pronouns_content.html'), "utf8");
+  const content = fs.readFileSync(path.join(__dirname, '../view/pronouns.html'), "utf8");
   const result = templateEngine(template, 'pronouns', 'Pronouns', '', content);
   res.send(result);
 });
