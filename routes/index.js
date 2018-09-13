@@ -6,6 +6,9 @@ const pronouns = require('../models/PronounEnum');
 const verbsPresent = require('../models/verbData');
 var path = require('path');
 
+const fs = require('fs');
+const templateEngine = require('../models/templateEngine');
+
 //Wild functions
 function buildRandomQuestion() {
   const randomVerbIndex = Math.floor(Math.random() * verbsPresent.length);
@@ -38,6 +41,21 @@ router.get('/blank', function(req, res, next) {
 
 router.get('/present-exercises', function(req, res, next) {
   res.sendFile(path.join(__dirname, 'present-exercises.html'));
+});
+
+
+
+router.get('/template-example-1', function(req, res, next) {
+  const template = fs.readFileSync(path.join(__dirname, '../view/template.html'), "utf8");
+  console.log(template);
+  const result = templateEngine(template, 'First title', 'First content');
+  res.send(result);
+});
+
+router.get('/template-example-2', function(req, res, next) {
+  const template = fs.readFileSync(path.join(__dirname, '../view/template.html'), "utf8");
+  const result = templateEngine(template, 'Second title', 'Second content');
+  res.send(result);
 });
 
 
