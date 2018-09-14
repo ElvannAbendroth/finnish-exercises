@@ -32,7 +32,15 @@ router.get('/question', function(req, res, next) {
 /* GET blank */
 
 router.get('/blank', function(req, res, next) {
-  res.sendFile(path.join(__dirname, '../public/blank.html'));
+  const template = fs.readFileSync(path.join(__dirname, '../view/template.html'), "utf8");
+  const result = templateEngine(
+    template, 
+    'blank', 
+    'Blank', 
+    '', 
+    'I\'m a blank file'
+  );
+  res.send(result);
 });
 
 /* GET present-exercises */
