@@ -47,7 +47,7 @@ router.get('/blank', function(req, res, next) {
 
 router.get('/present-exercises', function(req, res, next) {
   const template = fs.readFileSync(path.join(__dirname, '../view/template.html'), "utf8");
-  const content = fs.readFileSync(path.join(__dirname, '../view/present-exercises.html'), "utf8");
+  const content = fs.readFileSync(path.join(__dirname, '../public/content/present-exercises.html'), "utf8");
   const result = templateEngine(
     template, 
     'present-exercises', 
@@ -57,6 +57,7 @@ router.get('/present-exercises', function(req, res, next) {
   );
   res.send(result);
 });
+
 
 router.get('/pronouns', function(req, res, next) {
   const template = fs.readFileSync(path.join(__dirname, '../view/template.html'), "utf8");
