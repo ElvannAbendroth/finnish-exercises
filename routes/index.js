@@ -20,7 +20,15 @@ function buildRandomQuestion() {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  const template = fs.readFileSync(path.join(__dirname, '../view/template.html'), "utf8");
+  const result = templateEngine(
+    template, 
+    '/', 
+    'Index', 
+    '', 
+    'I\'m the index'
+  );
+  res.send(result);
 });
 
 /* GET List of Questions */
