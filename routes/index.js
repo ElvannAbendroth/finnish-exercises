@@ -20,7 +20,7 @@ function buildRandomQuestion() {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  const template = fs.readFileSync(path.join(__dirname, '../view/template.html'), "utf8");
+  const template = fs.readFileSync(path.join(__dirname, '../view/template-1.html'), "utf8");
   const result = templateEngine(
     template, 
     '/', 
