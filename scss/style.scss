@@ -1,5 +1,26 @@
-body{
-    background: linear-gradient(330.6deg, #4176A8 0%, rgba(255, 255, 255, 0) 100%), #5E4FBA;
-    color: #fff;
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
+
+body{
+  background: linear-gradient(330.6deg, #4176A8 0%, rgba(255, 255, 255, 0) 100%), #5E4FBA;
+  background-repeat: no-repeat;
+  height: 100%;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+
+
+}
+
+.navbar{
+  box-shadow: none;
+}
+
+#question{
+  background: #fff;
+  color: #5E4FBA;
+}
+
+.card {
+  border-radius: 0px;
+  margin:1em;
 }
