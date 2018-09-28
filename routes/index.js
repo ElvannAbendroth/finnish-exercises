@@ -20,7 +20,7 @@ function buildRandomQuestion() {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  const template = fs.readFileSync(path.join(__dirname, '../view/template-1.html'), "utf8");
+  const template = fs.readFileSync(path.join(__dirname, '../view/template-2.html'), "utf8");
   const result = templateEngine(
     template, 
     '/', 
@@ -72,6 +72,14 @@ router.get('/pronouns', function(req, res, next) {
   const content = fs.readFileSync(path.join(__dirname, '../view/pronouns.html'), "utf8");
   const result = templateEngine(template, 'pronouns', 'Pronouns', '', content);
   res.send(result);
+});
+
+
+/* GET Styles */
+
+router.get('/custom-style', function(req, res, next) {
+  res.send('../public/stylesheets/style.css');
+  //res.sendFile('../public/stylesheets/style.css');
 });
 
 module.exports = router;
