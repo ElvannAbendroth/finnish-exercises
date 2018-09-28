@@ -31,9 +31,56 @@
 
     <body>
 
-        <div id="question" class="card">
-            <h1>minä</h1>
+        <div class="container">
+            <div id="question-card" class="card">
+                <form>
+                    <div class="d-flex">
+                            <h1>minä</h1>
+                            <img src="img/icon-translate.svg">
+                            <img src="img/icon-clear.svg">
+
+                    </div>
+                    
+                    <div class="d-flex">
+                            <input type="text" id="verb" name="verb" class="form-control" placeholder="rakastaa">
+                            <a href='#' onClick='(e) => { e.preventDefault(); document.getElementById("answerform").submit();}'><img src='img/icon-send.svg'></img></a>
+                    </div>
+                    
+                    <small>answer: rakastan</small>
+
+                </form>
+        
+            </div>
+
+            <div id="score" class="card">
+                    <form >
+                        <div class="row">
+                            <div class="col">
+                                <span class="score-number">5</span>
+                                <small>success</small>
+
+                            </div>
+                            <div class="col">
+                                <span class="score-number">3</span>
+                                <small>missed</small>
+
+                            </div>
+                            <div class="col">
+                                <span class="score-number">8</span>
+                                <small>total</small>
+                            </div>
+                            
+
+
+                        </div>
+    
+                    </form>
+            
+                </div>
+
         </div>
+
+        
 
 
         
