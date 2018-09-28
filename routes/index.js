@@ -77,9 +77,9 @@ router.get('/pronouns', function(req, res, next) {
 
 /* GET Styles */
 
-router.get('/custom-style', function(req, res, next) {
+/*router.get('/custom-style', function(req, res, next) {
   res.send('../public/stylesheets/style.css');
   //res.sendFile('../public/stylesheets/style.css');
-});
+});*/
 
 module.exports = router;
