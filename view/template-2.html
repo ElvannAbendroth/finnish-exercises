@@ -10,6 +10,10 @@
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+        <!-- Material Design Icons-->
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
         <!-- Bootstrap core CSS -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
 
@@ -24,8 +28,8 @@
         <a class="navbar-brand d-none d-sm-block" href="#">Opetellaan Suomea</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon d-none"></span>
-        <img src="img/icon-question.svg">
-        <img src="img/icon-refresh.svg">
+        <i class="material-icons p-2">info</i>
+        <i class="material-icons p-2">refresh</i>
         </button>
     </nav>
 
@@ -33,26 +37,69 @@
 
         <div id="background"></div>
 
-        <!--modal about-->
-        <div id="about-modal" class="invisible">
-                <img src="img/icon-clear.svg">
-                <h1>about</h1>
-
+        <!--modal info-->
+        <div id="info-modal" class="menu-modal invisible">
+            <div class="d-flex p-4 justify-content-between">
+                <h1 class="align-middle"><i class="material-icons p-2 align-middle">info</i>info</h1>    
+                <span class="align-middle"><i class="material-icons p-1 ">clear</i></span>
+            </div>
+            
+            <div class="p-4">
+                <p>This web app was created to help you learn & practice Finnish verbs.</p>
+                <p>You are presented with a verb in it’s infinitive form, and must conjugate it to the present tense accordingly to a given pronoun.</p>
+                <p> Questions?<br>
+                    <a href="http://www.elvann.com/contact" target="_blank">elvann.com/contact</a></p>
+            </div>
         </div>
+
+        <!--modal info-->
+        <div id="translate-modal" class="menu-modal">
+            <div class="d-flex p-4 justify-content-between">
+                <h1 class="align-middle"><i class="material-icons p-2 align-middle">translate</i>language</h1>    
+                <span class="align-middle"><i class="material-icons p-1 ">clear</i></span>
+            </div>
+            
+            <div class="p-4">
+                <p>Here's a little bit of help to help you help you with this exercise.</p>
+                <h2>rakastaa</h2>
+                <p><i class="material-icons p-2 align-middle">translate</i> to love</p>
+                <h2>finnish pronouns</h2>
+                <ul>
+                    <li>minä - I</li>
+                    <li>sinä - you</li>
+                    <li>hän - he/she</li>
+                    <li>me - we</li>
+                    <li>te - you (pl.)</li>
+                    <li>he - they</li>
+                </ul>
+                <h2>conjugation endings</h2>
+                <ul>
+                    <li>minä - n</li>
+                    <li>sinä - t</li>
+                    <li>hän - /double vowel</li>
+                    <li>me - mme</li>
+                    <li>te - tte</li>
+                    <li>he - -vat</li>
+            </div>
+        </div>
+
+       
+
+         
 
         <div class="container">
             <div id="question-card" class="card">
                 <form>
                     <div class="d-flex align-middle">
                             <h1 id="pronoun" class="flex-grow-1 p-2">minä</h1>
-                            <img class="p-2" src="img/icon-translate.svg">
-                            <img class="p-2" src="img/icon-clear.svg">
+                            <i class="material-icons p-2">translate</i>
+                            <i class="material-icons p-2">clear</i>
 
                     </div>
                     
-                    <div class="d-flex">
+                    <div id="input-line" class="d-flex">
                             <input type="text" id="verb-input" name="verb" class="form-control flex-grow-1" placeholder="rakastaa">
-                            <a href='#' class="p-2" onClick='(e) => { e.preventDefault(); document.getElementById("answerform").submit();}'><img src='img/icon-send.svg'></img></a>
+                            <a href='#' class="align-middle p-2" onClick='(e) => { e.preventDefault(); document.getElementById("answerform").submit();}'><i class="material-icons p-2">send</i></a>
                     </div>
                     
                     <small class="p-2">answer: rakastan</small>
@@ -62,28 +109,25 @@
             </div>
 
             <div id="score" class="card">
-                    <form >
-                        <div class="row">
-                            <div class="col">
-                                <span class="score-number">5</span>
-                                <small>success</small>
-
-                            </div>
-                            <div class="col">
-                                <span class="score-number">3</span>
-                                <small>missed</small>
-
-                            </div>
-                            <div class="col">
-                                <span class="score-number">8</span>
-                                <small>total</small>
-                            </div>
-                            
-
+                    
+                    <div class="d-flex justify-content-between">
+                        <div class="">
+                            <span class="score-number">5</span><br>
+                            <i class="material-icons p-2">check</i>
 
                         </div>
+                        <div class="">
+                            <span class="score-number">3</span><br>
+                            <i class="material-icons p-2">clear</i>
+
+                        </div>
+                        <div class="">
+                            <span class="score-number">8</span><br>
+                            <i class="material-icons p-2">panorama_fish_eye</i>
+                        </div>
+                    </div>
     
-                    </form>
+                    
             
                 </div>
 

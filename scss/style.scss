@@ -1,39 +1,33 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
-
 body {
   background: #5E4FBA;
   height: 100%;
   color: #fff;
   font-family: 'Montserrat', sans-serif; }
 
-#background{
+#background {
   position: fixed;
-  left:0;
-  right:0;
-  bottom:0;
-  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
   background: -webkit-linear-gradient(119.4deg, #4176A8 0%, rgba(255, 255, 255, 0) 100%), #5E4FBA;
   background: -o-linear-gradient(119.4deg, #4176A8 0%, rgba(255, 255, 255, 0) 100%), #5E4FBA;
   background: linear-gradient(330.6deg, #4176A8 0%, rgba(255, 255, 255, 0) 100%), #5E4FBA;
   background-repeat: no-repeat;
-  z-index:-2;
+  z-index: -2; }
 
-}
-
-#about-modal{
+.menu-modal {
   position: fixed;
-  left:0;
-  right:0;
-  bottom:0;
-  top:0;
-  
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  padding-top: 20px;
   background: #fff;
   background-repeat: no-repeat;
-  z-index:2;
-
-  color:#5E4FBA;
-
-}
+  z-index: 2;
+  color: #5E4FBA; }
 
 .navbar {
   -webkit-box-shadow: none;
@@ -63,51 +57,54 @@ h1 {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  font-size: 24px; 
-   }
-
-#pronoun{
+  font-size: 24px;
   margin-bottom: 0;
-  vertical-align: baseline;
-}
+  vertical-align: baseline; }
 
-.score-number{
+h2 {
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  font-size: 18px;
+  margin-bottom: 0.3em;
+  vertical-align: baseline; }
+
+.score-number {
   font-family: Montserrat;
   font-style: normal;
   font-weight: 300;
   line-height: normal;
   font-size: 48px;
-
   color: #FFFFFF;
-  text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+  text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25); }
+
+#verb-input {
+  padding: 1rem;
+  display: block;
+  border: none;
+  border-bottom: 1px solid #5E4FBA;
+  width: 100%;
+  overflow: visible;
+  -webkit-appearance: textfield;
+  background-color: #fff;
+  color: #5E4FBA;
+  -webkit-rtl-ordering: logical;
+  cursor: text;
+  text-rendering: auto;
+  color: initial;
+  -webkit-writing-mode: horizontal-tb !important;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  font-size: 24px; 
+  padding-left: 0;
   }
 
-  #verb-input {
-    padding: 1rem;
-    display: block;
-    border: none;
-    border-bottom: 1px solid #5E4FBA;
-    width: 100%;
-    overflow: visible;
-    -webkit-appearance: textfield;
-    background-color: #fff;
-    color:#5E4FBA;
-    -webkit-rtl-ordering: logical;
-    cursor: text;
-    text-rendering: auto;
-    color: initial;
-    -webkit-writing-mode: horizontal-tb !important;
-    border-radius: 0; }
-  
-    textarea:focus, input:focus, #verb-input:focus{
-      outline: none;
-  }
+textarea:focus, input:focus, #verb-input:focus {
+  outline: none; }
 
-  #verb-input::-webkit-input-placeholder{
-    color:#CCC7EE;
-  }
+#verb-input::-webkit-input-placeholder {
+  color: #CCC7EE; }
 
-  #verb-input::-ms-value {
-    color:#5E4FBA;
-    font-style: bold;
-  }
+#verb-input::-ms-value {
+  color: #5E4FBA;
+  font-style: bold; }
