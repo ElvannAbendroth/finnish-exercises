@@ -48,8 +48,7 @@ body {
   border-radius: 0px;
   margin: 0.9em;
   margin-top: 0.5em;
-  padding-top: 0.5em;
-  padding: 1.3em; }
+  padding: 1.0em; }
 
 .container {
   height: 100%; }
@@ -64,7 +63,13 @@ h1 {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  font-size: 24px; }
+  font-size: 24px; 
+   }
+
+#pronoun{
+  margin-bottom: 0;
+  vertical-align: baseline;
+}
 
 .score-number{
   font-family: Montserrat;
@@ -77,3 +82,32 @@ h1 {
   text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
   }
 
+  #verb-input {
+    padding: 1rem;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #5E4FBA;
+    width: 100%;
+    overflow: visible;
+    -webkit-appearance: textfield;
+    background-color: #fff;
+    color:#5E4FBA;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    text-rendering: auto;
+    color: initial;
+    -webkit-writing-mode: horizontal-tb !important;
+    border-radius: 0; }
+  
+    textarea:focus, input:focus, #verb-input:focus{
+      outline: none;
+  }
+
+  #verb-input::-webkit-input-placeholder{
+    color:#CCC7EE;
+  }
+
+  #verb-input::-ms-value {
+    color:#5E4FBA;
+    font-style: bold;
+  }
