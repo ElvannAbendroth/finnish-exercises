@@ -27,7 +27,8 @@ body {
   background: #fff;
   background-repeat: no-repeat;
   z-index: 2;
-  color: #5E4FBA; }
+  color: #5E4FBA;
+  overflow:scroll; }
 
 .navbar {
   -webkit-box-shadow: none;
@@ -94,8 +95,7 @@ h2 {
   color: initial;
   -webkit-writing-mode: horizontal-tb !important;
   -webkit-border-radius: 0;
-  border-radius: 0;
-  font-size: 24px; 
+  border-radius: 0; 
   padding-left: 0;
   }
 
