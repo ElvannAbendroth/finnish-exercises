@@ -44,31 +44,30 @@ $( document ).ready(function() {
         const answer = $('#answerInput').val();
         const isCorrect = answer === window.elvann.conjugatedVerb;
         if (isCorrect) {
-        alert('Answer was correct! Yay! Try the next one!');
-        //$('#alert').addClass('alert alert-success')
-        //$('#alert').html('Answer was correct! Yay! Try the next one!');
-        //TODO: create a step that replicates the alert effect of waiting from a user input, and will clear the exercise
-        fetchQuestion();
-        window.elvann.totalExercises += 1;
-
-        $('#totalExercises').html('Total Exercises: ' + window.elvann.totalExercises);
-        $('#answerMissed').html('');
-        if (window.elvann.noMistake < 1){
-            window.elvann.success += 1;
-        }
-        updateStats(window.elvann.success, window.elvann.missed, window.elvann.totalExercises);
-        } else {
-        alert('Answer was incorrect! Try again!');
-        //$('#alert').addClass('alert alert-danger')
-        //$('#alert').html('Answer was incorrect! Try again!');
-        //TODO: clear field
-        if (window.elvann.noMistake < 1){
-            window.elvann.missed +=1;
+            $('#verb-input').addClass('correct', 1000, () => {
+                fetchQuestion();
+                $('#verb-input').removeClass('correct', 0);
+            });
+            //TODO: create a step that replicates the alert effect of waiting from a user input, and will clear the exercise
+            window.elvann.totalExercises += 1;
+            $('#totalExercises').html('Total Exercises: ' + window.elvann.totalExercises);
+            $('#answerMissed').html('');
+            if (window.elvann.noMistake < 1){
+                window.elvann.success += 1;
+            }
             updateStats(window.elvann.success, window.elvann.missed, window.elvann.totalExercises);
-        } if (window.elvann.noMistake >= 1){
-            $('#answerMissed').html('Answer: ' + window.elvann.conjugatedVerb);
-        }
-        window.elvann.noMistake += 1;
+        } else {
+            $('#verb-input').addClass('wrong', 1000, () => {
+                $('#verb-input').removeClass('wrong', 0);
+            });
+            //TODO: clear field
+            if (window.elvann.noMistake < 1){
+                window.elvann.missed +=1;
+                updateStats(window.elvann.success, window.elvann.missed, window.elvann.totalExercises);
+            } if (window.elvann.noMistake >= 1){
+                $('#answerMissed').html('Answer: ' + window.elvann.conjugatedVerb);
+            }
+            window.elvann.noMistake += 1;
         }
     });   
 });
