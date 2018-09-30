@@ -28,7 +28,7 @@
         <a class="navbar-brand d-none d-sm-block" href="#">Opetellaan Suomea</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon d-none"></span>
-        <i class="material-icons p-2">info</i>
+        <a data-toggle="modal" data-target="#info-modal"><i class="material-icons p-2">info</i></a>
         <i class="material-icons p-2">refresh</i>
         </button>
     </nav>
@@ -38,10 +38,10 @@
         <div id="background"></div>
 
         <!--modal info-->
-        <div id="info-modal" class="menu-modal invisible">
+        <div id="info-modal" class="menu-modal modal">
             <div class="d-flex p-4 justify-content-between">
                 <h1 class="align-middle"><i class="material-icons p-2 align-middle">info</i>info</h1>    
-                <span class="align-middle"><i class="material-icons p-1 ">clear</i></span>
+                <a class="close align-middle" data-dismiss="modal"><i class="material-icons p-1 ">clear</i></a>
             </div>
             
             <div class="p-4">
@@ -53,10 +53,10 @@
         </div>
 
         <!--modal info-->
-        <div id="translate-modal" class="menu-modal">
+        <div id="translate-modal" class="menu-modal modal">
             <div class="d-flex p-4 justify-content-between">
                 <h1 class="align-middle"><i class="material-icons p-2 align-middle">translate</i>language</h1>    
-                <span class="align-middle"><i class="material-icons p-1 ">clear</i></span>
+                <a class="close align-middle" data-dismiss="modal"><i class="material-icons p-1 ">clear</i></a>
             </div>
             
             <div class="scroll p-4">
@@ -92,7 +92,7 @@
                 <form>
                     <div class="d-flex align-middle">
                             <h1 id="pronoun" class="flex-grow-1 p-2">minä</h1>
-                            <i class="material-icons p-2">translate</i>
+                            <a data-toggle="modal" data-target="#translate-modal"><i class="material-icons p-2">translate</i></a>
                             <i class="material-icons p-2">clear</i>
 
                     </div>
