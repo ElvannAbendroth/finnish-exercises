@@ -22,6 +22,8 @@
 
         <!-- Custom Styles -->
         <link href="stylesheets/style.css" rel="stylesheet" type="text/css">
+    
+    
     </head>
 
     <nav class="navbar navbar-expand-lg navbar-dark elvann-color">
@@ -61,8 +63,8 @@
             
             <div class="scroll p-4">
                 <p>Here's a little bit of help to help you help you with this exercise.</p>
-                <h2>rakastaa</h2>
-                <p><i class="material-icons p-2 align-middle">translate</i> to love</p>
+                <h2 id="infinitive"></h2>
+                <p><i class="material-icons p-2 align-middle">translate</i><span id="translation"></span></p>
                 <h2>finnish pronouns</h2>
                 <ul>
                     <li>minä - I</li>
@@ -82,27 +84,22 @@
                     <li>he - -vat</li>
             </div>
         </div>
-
-       
-
-         
-
         <div class="container">
-            <div id="question-card" class="card">
-                <form>
+            <div id="question-card" class="card fadeIn slow">
+                <form id="answerForm">
                     <div class="d-flex align-middle">
-                            <h1 id="pronoun" class="flex-grow-1 p-2">minä</h1>
+                            <h1 id="pronoun" class="flex-grow-1 p-2"></h1>
                             <a data-toggle="modal" data-target="#translate-modal"><i class="material-icons p-2">translate</i></a>
-                            <i class="material-icons p-2">clear</i>
+                            <a onclick="fetchQuestion()"><i class="material-icons p-2">clear</i></a>
 
                     </div>
                     
-                    <div id="input-line" class="d-flex">
-                            <input type="text" id="verb-input" name="verb" class="form-control flex-grow-1" placeholder="rakastaa">
+                    <div id="input-line" class="d-flex p-2">
+                            <input type="text" id="verb-input" name="verb" class="form-control flex-grow-1" placeholder="">
                             <a href='#' class="align-middle p-2" onClick='(e) => { e.preventDefault(); document.getElementById("answerform").submit();}'><i class="material-icons p-2">send</i></a>
                     </div>
                     
-                    <small class="p-2">answer: rakastan</small>
+                    <small id="answerMissed" class="p-2"></small>
 
                 </form>
         
@@ -112,17 +109,16 @@
                     
                     <div class="d-flex justify-content-between">
                         <div class="">
-                            <span class="score-number">5</span><br>
+                            <span id="success" class="score-number"></span><br>
                             <i class="material-icons p-2">check</i>
-
                         </div>
                         <div class="">
-                            <span class="score-number">3</span><br>
+                            <span id="missed" class="score-number"></span><br>
                             <i class="material-icons p-2">clear</i>
 
                         </div>
                         <div class="">
-                            <span class="score-number">8</span><br>
+                            <span id="totalExercises" class="score-number"></span><br>
                             <i class="material-icons p-2">panorama_fish_eye</i>
                         </div>
                     </div>
@@ -149,6 +145,10 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.11/js/mdb.min.js"></script>
         <!-- JQuery UI -->
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+        <!-- Present Exercises -->
+
+        <script src="js/present-exercises.js"></script>
 
     </body>
 
