@@ -26,64 +26,28 @@
     
     </head>
 
-    <nav class="navbar navbar-expand-lg navbar-dark elvann-color">
-        <a class="navbar-brand d-none d-sm-block" href="#">Opetellaan Suomea</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon d-none"></span>
-        <a data-toggle="modal" data-target="#info-modal"><i class="material-icons p-2">info</i></a>
-        <i class="material-icons p-2">refresh</i>
-        </button>
+    <!--NAVIGATION-->
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="d-flex justify-content-start flex-grow-1">
+                <a id="pageTitle" class="navbar-brand" href="#">Opetellaan Suomea</a>
+                <a id="pageLogo" class="navbar-brand" href="#">OS</a>
+        </div>
+        
+        <div class="d-flex justify-content-end">
+                <a data-toggle="modal" data-target="#info-modal"><i class="material-icons p-2">info</i></a>
+                <a onclick="resetScore()"><i class="material-icons p-2">refresh</i></a>        
+        </div>
+        
     </nav>
+
+    <!--END NAVIGATION-->
 
     <body>
 
         <div id="background"></div>
 
-        <!--modal info-->
-        <div id="info-modal" class="menu-modal modal">
-            <div class="d-flex p-4 justify-content-between">
-                <h1 class="align-middle"><i class="material-icons p-2 align-middle">info</i>info</h1>    
-                <a class="close align-middle" data-dismiss="modal"><i class="material-icons p-1 ">clear</i></a>
-            </div>
-            
-            <div class="p-4">
-                <p>This web app was created to help you learn & practice Finnish verbs.</p>
-                <p>You are presented with a verb in it’s infinitive form, and must conjugate it to the present tense accordingly to a given pronoun.</p>
-                <p> Questions?<br>
-                    <a href="http://www.elvann.com/contact" target="_blank">elvann.com/contact</a></p>
-            </div>
-        </div>
-
-        <!--modal info-->
-        <div id="translate-modal" class="menu-modal modal">
-            <div class="d-flex p-4 justify-content-between">
-                <h1 class="align-middle"><i class="material-icons p-2 align-middle">translate</i>language</h1>    
-                <a class="close align-middle" data-dismiss="modal"><i class="material-icons p-1 ">clear</i></a>
-            </div>
-            
-            <div class="scroll p-4">
-                <p>Here's a little bit of help to help you help you with this exercise.</p>
-                <h2 id="infinitive"></h2>
-                <p><i class="material-icons p-2 align-middle">translate</i><span id="translation"></span></p>
-                <h2>finnish pronouns</h2>
-                <ul>
-                    <li>minä - I</li>
-                    <li>sinä - you</li>
-                    <li>hän - he/she</li>
-                    <li>me - we</li>
-                    <li>te - you (pl.)</li>
-                    <li>he - they</li>
-                </ul>
-                <h2>conjugation endings</h2>
-                <ul>
-                    <li>minä - n</li>
-                    <li>sinä - t</li>
-                    <li>hän - /double vowel</li>
-                    <li>me - mme</li>
-                    <li>te - tte</li>
-                    <li>he - -vat</li>
-            </div>
-        </div>
+        
         <div class="container">
             <div id="question-card" class="card fadeIn slow">
                 <form id="answerForm">
@@ -129,7 +93,55 @@
 
         </div>
 
-        
+        <!--MODALS-->
+
+        <!--modal info-->
+        <div id="info-modal" class="menu-modal modal">
+                <div class="d-flex p-4 justify-content-between">
+                    <h1 class="align-middle"><i class="material-icons p-2 align-middle">info</i>info</h1>    
+                    <a class="close align-middle" data-dismiss="modal"><i class="material-icons p-1 ">clear</i></a>
+                </div>
+                
+                <div class="p-4">
+                    <p>"Opetellaan Suomea" is a web application designed to help you learn & practice Finnish.</p>
+                    <p>In the current exercise, you are given verb in it’s infinitive form, and you must conjugate it to the present tense accordingly to a given pronoun.  The translate window gives you a few tips on how to conjugate verb in Finnish.</p>
+                    <p> Questions?<br>
+                        <a href="http://www.elvann.com/contact" target="_blank">elvann.com/contact</a></p>
+                </div>
+            </div>
+    
+            <!--modal info-->
+            <div id="translate-modal" class="menu-modal modal">
+                <div class="d-flex p-4 justify-content-between">
+                    <h1 class="align-middle"><i class="material-icons p-2 align-middle">translate</i>language</h1>    
+                    <a class="close align-middle" data-dismiss="modal"><i class="material-icons p-1 ">clear</i></a>
+                </div>
+                
+                <div class="scroll p-4">
+                    <p>Here's a little bit of help to help you help you with this exercise.</p>
+                    <h2 id="infinitive"></h2>
+                    <p><i class="material-icons p-2 align-middle">translate</i><span id="translation"></span></p>
+                    <h2>finnish pronouns</h2>
+                    <ul>
+                        <li>minä - I</li>
+                        <li>sinä - you</li>
+                        <li>hän - he/she</li>
+                        <li>me - we</li>
+                        <li>te - you (pl.)</li>
+                        <li>he - they</li>
+                    </ul>
+                    <h2>conjugation endings</h2>
+                    <ul>
+                        <li>minä - n</li>
+                        <li>sinä - t</li>
+                        <li>hän - /double vowel</li>
+                        <li>me - mme</li>
+                        <li>te - tte</li>
+                        <li>he - -vat</li>
+                </div>
+            </div>
+
+            <!--END MODALS-->
 
 
         

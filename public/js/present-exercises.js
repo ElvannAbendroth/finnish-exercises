@@ -3,10 +3,11 @@ window.score.success = 0;
 window.score.missed = 0;
 window.score.totalExercises = 0;
 
-function resetScore (){
+function resetScore(){
     window.score.success = 0;
     window.score.missed = 0;
     window.score.totalExercises = 0;
+    updateStats(window.score.success, window.score.missed, window.score.totalExercises);
 }
 
 function fetchQuestion(){
