@@ -1,12 +1,12 @@
-window.elvann = { };
-window.elvann.success = 0;
-window.elvann.missed = 0;
-window.elvann.totalExercises = 0;
+window.score = { };
+window.score.success = 0;
+window.score.missed = 0;
+window.score.totalExercises = 0;
 
 function resetScore (){
-    window.elvann.success = 0;
-    window.elvann.missed = 0;
-    window.elvann.totalExercises = 0;
+    window.score.success = 0;
+    window.score.missed = 0;
+    window.score.totalExercises = 0;
 }
 
 function fetchQuestion(){
@@ -23,8 +23,8 @@ function fetchQuestion(){
     $('#verb-input').val('');
     $('#translation').html(translation);
 
-    window.elvann.conjugatedVerb = conjugatedVerb;
-    window.elvann.noMistake = 0; // resets every round
+    window.score.conjugatedVerb = conjugatedVerb;
+    window.score.noMistake = 0; // resets every round
     
     });
 }
@@ -39,37 +39,37 @@ $( document ).ready(function() {
     /* This code gets executed when the page loads */ 
 
     fetchQuestion();
-    updateStats(window.elvann.success, window.elvann.missed, window.elvann.totalExercises);
+    updateStats(window.score.success, window.score.missed, window.score.totalExercises);
 
     $('#answerForm').submit((event) => {
         event.preventDefault();
         const answer = $('#verb-input').val();
-        const isCorrect = answer === window.elvann.conjugatedVerb;
+        const isCorrect = answer === window.score.conjugatedVerb;
         if (isCorrect) {
             $('#verb-input').addClass('correct', 1000, () => {
                 fetchQuestion();
                 $('#verb-input').removeClass('correct', 0);
             });
             //TODO: create a step that replicates the alert effect of waiting from a user input, and will clear the exercise
-            window.elvann.totalExercises += 1;
-            $('#totalExercises').html(window.elvann.totalExercises);
+            window.score.totalExercises += 1;
+            $('#totalExercises').html(window.score.totalExercises);
             $('#answerMissed').html('');
-            if (window.elvann.noMistake < 1){
-                window.elvann.success += 1;
+            if (window.score.noMistake < 1){
+                window.score.success += 1;
             }
-            updateStats(window.elvann.success, window.elvann.missed, window.elvann.totalExercises);
+            updateStats(window.score.success, window.score.missed, window.score.totalExercises);
         } else {
             $('#verb-input').addClass('wrong', 1000, () => {
                 $('#verb-input').removeClass('wrong', 0);
             });
             $('#verb-input').val('');
-            if (window.elvann.noMistake < 1){
-                window.elvann.missed +=1;
-                updateStats(window.elvann.success, window.elvann.missed, window.elvann.totalExercises);
-            } if (window.elvann.noMistake >= 2){
-                $('#answerMissed').html('Answer: ' + window.elvann.conjugatedVerb);
+            if (window.score.noMistake < 1){
+                window.score.missed +=1;
+                updateStats(window.score.success, window.score.missed, window.score.totalExercises);
+            } if (window.score.noMistake >= 2){
+                $('#answerMissed').html('Answer: ' + window.score.conjugatedVerb);
             }
-            window.elvann.noMistake += 1;
+            window.score.noMistake += 1;
         }
     });   
 });
