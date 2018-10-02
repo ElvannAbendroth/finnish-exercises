@@ -50,11 +50,18 @@
         
         <div class="container">
             <div id="question-card" class="card fadeIn slow">
+                
+
                 <form id="answerForm">
                     <div class="d-flex align-middle">
-                            <h1 id="pronoun" class="flex-grow-1 p-2"></h1>
-                            <a data-toggle="modal" data-target="#translate-modal"><i class="material-icons p-2">translate</i></a>
-                            <a onclick="fetchQuestion()"><i class="material-icons p-2">clear</i></a>
+                        <div class="flex-grow-1">
+                            <h1 class="d-none d-sm-block p-2">Present Verb exercises</h1>
+                            <p class="d-none d-sm-block p-2">Conjugate the Finnish verb to the present tense with it’s pronoun.</p>                            
+                            <h1 id="pronoun" class="p-2"></h1>
+                        </div>
+                        
+                        <a data-toggle="modal" data-target="#translate-modal"><i class="material-icons p-2">translate</i></a>
+                        <a onclick="fetchQuestion()"><i class="material-icons p-2">clear</i></a>
 
                     </div>
                     
@@ -144,7 +151,7 @@
             <!--END MODALS-->
 
 
-        
+        <footer class="justify-content-center d-none d-sm-flex">design & developement by Elvann ~ elvann.com</footer>
         <!-- SCRIPTS -->
         
         <!-- JQuery -->
