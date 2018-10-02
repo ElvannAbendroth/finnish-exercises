@@ -47,7 +47,7 @@ $( document ).ready(function() {
         const answer = $('#verb-input').val();
         const isCorrect = answer === window.score.conjugatedVerb;
         if (isCorrect) {
-            $('#verb-input').addClass('correct', 1000, () => {
+            $('#verb-input').addClass('correct', 350, () => {
                 fetchQuestion();
                 $('#verb-input').removeClass('correct', 0);
             });
