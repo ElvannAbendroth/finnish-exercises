@@ -47,9 +47,10 @@ $( document ).ready(function() {
         const answer = $('#verb-input').val();
         const isCorrect = answer === window.score.conjugatedVerb;
         if (isCorrect) {
-            $('#verb-input').addClass('correct', 1000, () => {
-                fetchQuestion();
-                $('#verb-input').removeClass('correct', 0);
+            $('#verb-input').addClass('correct', 300, () => {
+                $('#verb-input').removeClass('correct', 200, () => {
+                    fetchQuestion();
+                });
             });
             //TODO: create a step that replicates the alert effect of waiting from a user input, and will clear the exercise
             window.score.totalExercises += 1;
@@ -60,8 +61,8 @@ $( document ).ready(function() {
             }
             updateStats(window.score.success, window.score.missed, window.score.totalExercises);
         } else {
-            $('#verb-input').addClass('wrong', 1000, () => {
-                $('#verb-input').removeClass('wrong', 0);
+            $('#verb-input').addClass('wrong', 300, () => {
+                $('#verb-input').removeClass('wrong', 200);
             });
             $('#verb-input').val('');
             if (window.score.noMistake < 1){
