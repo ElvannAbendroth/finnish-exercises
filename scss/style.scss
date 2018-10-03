@@ -111,15 +111,28 @@ h2 {
   -webkit-writing-mode: horizontal-tb !important;
   -webkit-border-radius: 0;
   border-radius: 0; 
-  padding-left: 0;
+  padding-left: 7px;
+}
+
+
+#verb-input.correct {
+  background-color: #90CEB8;
 }
 
 #verb-input.wrong {
-  background-color: red;
+  background-color: #EDC1D3;
 }
 
-#verb-input.correct {
-  background-color: rgba(0, 255, 0, 0.5);
+#success.active, #success-icon.active #success-text.active{
+  color: #90CEB8;
+}
+
+#missed.active, #missed-icon.active, #missed-text.active{
+  color: #EDC1D3;
+}
+
+#totalExercises.active, #total-icon.active, #total-text.active{
+  color: #B8D8F6;
 }
 
 textarea:focus, input:focus, #verb-input:focus {

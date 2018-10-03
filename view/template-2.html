@@ -66,7 +66,7 @@
                     </div>
                     
                     <div id="input-line" class="d-flex p-2">
-                            <input type="text" id="verb-input" name="verb" class="form-control flex-grow-1" placeholder="">
+                            <input type="text" id="verb-input" name="verb" class="form-control flex-grow-1" placeholder="" autocomplete="off">
                             <a href='#' class="align-middle p-2" onClick='(e) => { e.preventDefault(); document.getElementById("answerform").submit();}'><i class="material-icons p-2">send</i></a>
                     </div>
                     
@@ -81,16 +81,20 @@
                     <div class="d-flex justify-content-middle">
                         <div class="flex-grow-1">
                             <span id="success" class="score-number "></span><br>
-                            <i class="material-icons p-2">check</i>
+                            <i id="success-icon" class="material-icons p-2 d-block d-sm-none">check</i>
+                            <span id="success-text" class="d-none d-sm-block p-2">success</span>
+
                         </div>
                         <div class="flex-grow-2">
                             <span id="missed" class="score-number "></span><br>
-                            <i class="material-icons p-2">clear</i>
+                            <i id="missed-icon" class="material-icons p-2 d-block d-sm-none">clear</i>
+                            <span id="missed-text" class="d-none d-sm-block p-2">missed</span>
 
                         </div>
                         <div class="flex-grow-1">
                             <span id="totalExercises" class="score-number "></span><br>
-                            <i class="material-icons p-2">panorama_fish_eye</i>
+                            <i id="total-icon" class="material-icons p-2 d-block d-sm-none">panorama_fish_eye</i>
+                            <span id="total-text" class="d-none d-sm-block p-2">total</span>
                         </div>
                     </div>
     

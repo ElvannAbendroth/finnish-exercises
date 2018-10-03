@@ -3,10 +3,28 @@ window.score.success = 0;
 window.score.missed = 0;
 window.score.totalExercises = 0;
 
+
 function resetScore(){
     window.score.success = 0;
     window.score.missed = 0;
     window.score.totalExercises = 0;
+
+    $('#success, #success-icon, #success-text').addClass('active', 500, () => {
+        $('#success, #success-icon #success-text').removeClass('active', 200, () => {
+        });
+    });
+
+    $('#missed, #missed-icon #missed-text').addClass('active', 500, () => {
+        $('#missed, #missed-icon #missed-text').removeClass('active', 200, () => {
+        });
+    });
+
+    $('#totalExercises, #total-icon #total-text').addClass('active', 500, () => {
+        $('#totalExercises, #total-icon, #total-text').removeClass('active', 200, () => {
+        });
+    });
+
+
     updateStats(window.score.success, window.score.missed, window.score.totalExercises);
 }
 
@@ -53,11 +71,23 @@ $( document ).ready(function() {
                 });
             });
             //TODO: create a step that replicates the alert effect of waiting from a user input, and will clear the exercise
+            
+            $('#totalExercises, #total-icon #total-text').addClass('active', 500, () => {
+                $('#totalExercises, #total-icon, #total-text').removeClass('active', 200, () => {
+                });
+            });
             window.score.totalExercises += 1;
             $('#totalExercises').html(window.score.totalExercises);
             $('#answerMissed').html('');
             if (window.score.noMistake < 1){
+                
+                $('#success, #success-icon, #success-text').addClass('active', 500, () => {
+                    $('#success, #success-icon #success-text').removeClass('active', 200, () => {
+                    });
+                });
+                
                 window.score.success += 1;
+                
             }
             updateStats(window.score.success, window.score.missed, window.score.totalExercises);
         } else {
@@ -66,6 +96,10 @@ $( document ).ready(function() {
             });
             $('#verb-input').val('');
             if (window.score.noMistake < 1){
+                $('#missed, #missed-icon #missed-text').addClass('active', 500, () => {
+                    $('#missed, #missed-icon #missed-text').removeClass('active', 200, () => {
+                    });
+                });
                 window.score.missed +=1;
                 updateStats(window.score.success, window.score.missed, window.score.totalExercises);
             } if (window.score.noMistake >= 2){
