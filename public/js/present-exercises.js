@@ -35,12 +35,45 @@ function fetchQuestion(){
     const conjugatedVerb = data.verb.conjugations[data.tense][pronoun];
     const infinitive = data.verb.infinitive;
     const translation = data.verb.translation;
+    const verbType = data.verb.type;
+    verbHelp = "";
+    
+    if (verbType == 1){
+        verbHelp = "-Va/-Vä <br>\
+        To conjugate this group, remove -a or -ä from the infinitive and add the stem.<br>\
+        This type of verb undergoes <i>consonnant gradation</i> if possible.";
+        }
+    else if (verbType == 2){
+        verbHelp = "I am a type 2 verb!";
+        }
+    else if (verbType == 3){
+        verbHelp = "I am a type 3 verb!";
+        }
+    else if (verbType == 4){
+        verbHelp = "I am a type 4 verb!";
+        }
+    else if (verbType == 5){
+        verbHelp = "I am a type 5 verb!";
+        }
+    else{
+        verbHelp = "I am a type 6 verb!";
+        }
     
     $('#pronoun').html(pronoun);
     $('#infinitive').html(infinitive);
     $("#verb-input").attr("placeholder", infinitive);
     $('#verb-input').val('');
     $('#translation').html(translation);
+    
+    if (verbType != ""){
+        $('#verbTypeTitle').html("verbityypi " + verbType);
+        $('#verbTypeHelp').html(verbHelp);
+    }
+    else{
+        $('#verbTypeTitle').html("verbityypi unknown");
+        $('#verbTypeHelp').html("Anteeksi! We currently do not have information about how to conjugate this verb.");
+    }
+    
 
     window.score.conjugatedVerb = conjugatedVerb;
     window.score.noMistake = 0; // resets every round

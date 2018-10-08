@@ -6,7 +6,7 @@ class Verb {
         this.type = formsList[2];
 
         const presentOffset = 3;
-        const pastOffset = 9;
+        const pastOffset = presentOffset + 6;
     
         this.conjugations = {
             "present": {
@@ -34,6 +34,11 @@ class Verb {
 
     getConjugation(tense, pronoun) {
         return this.conjugations[tense][pronoun];
+    }
+
+    getType()
+    {
+        return this.type();
     }
 
 }
