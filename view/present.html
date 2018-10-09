@@ -50,31 +50,7 @@
 
     
         <div class="container">
-            <div id="question-card" class="card fadeIn slow">
-                
-                <form id="answerForm">
-                    <div class="d-flex align-middle">
-                        <div class="flex-grow-1">
-                            <h1 class="d-none d-sm-block p-2">Present Verb exercises</h1>
-                            <p class="d-none d-sm-block p-2">Conjugate the Finnish verb to the present tense with it’s pronoun.</p>                            
-                            <h1 id="pronoun" class="p-2"></h1>
-                        </div>
-                        
-                        <a data-toggle="modal" data-target="#translate-modal"><i class="material-icons p-2">translate</i></a>
-                        <a onclick="fetchQuestion()"><i class="material-icons p-2">clear</i></a>
-
-                    </div>
-                    
-                    <div id="input-line" class="d-flex p-2">
-                            <input type="text" id="verb-input" name="verb" class="form-control flex-grow-1" placeholder="" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-                            <a href='#' class="align-middle p-2" onClick='(e) => { e.preventDefault(); document.getElementById("answerform").submit();}'><i class="material-icons p-2">send</i></a>
-                    </div>
-                    
-                    <small id="answerMissed" class="p-2"></small>
-
-                </form>
-        
-            </div>
+            <div id="question-card" class="card fadeIn slow"></div>
 
             <div id="score" class="card"></div>
 
