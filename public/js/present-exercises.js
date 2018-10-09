@@ -162,7 +162,7 @@ class QuestionBox {
             
             <div id="input-line" class="d-flex p-2">
                     <input type="text" id="verb-input" name="verb" class="form-control flex-grow-1" placeholder="${infinitive}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-                    <a href='#' class="align-middle p-2" onClick='(e) => { e.preventDefault(); document.getElementById("answerform").submit();}'><i class="material-icons p-2">send</i></a>
+                    <button type="submit" class="align-middle p-2"><i class="material-icons p-2">send</i></button>
             </div>
             
             <small id="answerMissed" class="p-2"></small>
