@@ -2,6 +2,13 @@ window.score = { };
 window.score.success = 0;
 window.score.missed = 0;
 window.score.totalExercises = 0;
+window.score.tense = 'present';
+
+function setTense(tense) {
+    window.score.tense = tense;
+    fetchQuestion();
+    // update the text    
+}
 
 
 function resetScore(){
