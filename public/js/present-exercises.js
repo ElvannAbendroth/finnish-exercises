@@ -40,11 +40,13 @@ function fetchQuestion(){
     
     if (verbType == 1){
         verbHelp = "-Va/-Vä <br>\
-        To conjugate this group, remove -a or -ä from the infinitive and add the stem.<br>\
-        This type of verb undergoes <i>consonnant gradation</i> if possible.";
+        <ul><li>To conjugate this group, remove -a or -ä from the infinitive and add the stem.</li>\
+        <li>This type of verb undergoes <i>consonnant gradation</i> if possible.</li></ul>";
         }
     else if (verbType == 2){
-        verbHelp = "I am a type 2 verb!";
+        verbHelp = "-da/-dä <br>\
+        To conjugate this group, remove -da or -dä from the infinitive and add the stem.<br>\
+        ";
         }
     else if (verbType == 3){
         verbHelp = "I am a type 3 verb!";
