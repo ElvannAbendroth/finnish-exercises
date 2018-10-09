@@ -66,7 +66,83 @@ class ScoreBoard {
 
 }
 
+class VerbHelp {
+
+    constructor (wrapperId) {
+        this.wrapperId = wrapperId;
+    }
+
+    updateInfo (infinitive, translation, type) {
+        let verbHelp = "";
+        switch (type) {
+            case 1: 
+                verbHelp = `-Va/-Vä
+                <ul>
+                    <li>To conjugate this group, remove -a or -ä from the infinitive and add the stem.</li>
+                    <li>This type of verb undergoes <i>consonnant gradation</i> if possible.</li>
+                </ul>`;
+                break;
+            case 2: 
+                verbHelp = `-da/-dä <br>
+                To conjugate this group, remove -da or -dä from the infinitive and add the stem. <br>`;
+                break;
+            case 3:
+                verbHelp = 'I am a type 3 verb!';
+                break;
+            case 4:
+                verbHelp = 'I am a type 4 verb!';
+                break;
+            case 5:
+                verbHelp = 'I am a type 5 verb!';
+                break;
+            case 6:
+                verbHelp = 'I am a type 6 verb!';
+                break;
+            default:
+                verbHelp = 'Anteeksi! We currently do not have information about how to conjugate this verb.';
+                break;
+        }
+
+        const verbTypeTitle = 'verbityyppi ' + (type || 'unknown');
+
+        const html = `<div class="d-flex p-4 justify-content-between">
+            <h1 class="align-middle"><i class="material-icons p-2 align-middle">translate</i>language</h1>    
+            <a class="close align-middle" data-dismiss="modal"><i class="material-icons p-1 ">clear</i></a>
+        </div>
+    
+        <div class="scroll p-4">
+            <p>Here's a little bit of help to help you help you with this exercise.</p>
+            <h2 id="infinitive">${infinitive}</h2>
+            <p><i class="material-icons p-2 align-middle">translate</i><span id="translation">${translation}</span></p>
+            <h2 id="verbTypeTitle">${verbTypeTitle}</h2>
+            <p id="verbTypeHelp">${verbHelp}</p>
+            <h2>finnish pronouns</h2>
+            <ul>
+                <li>minä - I</li>
+                <li>sinä - you</li>
+                <li>hän - he/she</li>
+                <li>me - we</li>
+                <li>te - you (pl.)</li>
+                <li>he - they</li>
+            </ul>
+            <h2>conjugation stems</h2>
+            <ul>
+                <li>minä - n</li>
+                <li>sinä - t</li>
+                <li>hän - /double vowel</li>
+                <li>me - mme</li>
+                <li>te - tte</li>
+                <li>he - -vat</li>
+            </ul>
+        </div>`;
+        $('#' + this.wrapperId).html(html);
+    }
+
+}
+
+
 const scoreBoard = new ScoreBoard('score');
+const verbHelp = new VerbHelp('translate-modal');
 
 window.score = { };
 window.score.tense = 'present';
@@ -90,47 +166,15 @@ function fetchQuestion(){
     const infinitive = data.verb.infinitive;
     const translation = data.verb.translation;
     const verbType = data.verb.type;
-    verbHelp = "";
-    
-    if (verbType == 1){
-        verbHelp = "-Va/-Vä <br>\
-        <ul><li>To conjugate this group, remove -a or -ä from the infinitive and add the stem.</li>\
-        <li>This type of verb undergoes <i>consonnant gradation</i> if possible.</li></ul>";
-        }
-    else if (verbType == 2){
-        verbHelp = "-da/-dä <br>\
-        To conjugate this group, remove -da or -dä from the infinitive and add the stem.<br>\
-        ";
-        }
-    else if (verbType == 3){
-        verbHelp = "I am a type 3 verb!";
-        }
-    else if (verbType == 4){
-        verbHelp = "I am a type 4 verb!";
-        }
-    else if (verbType == 5){
-        verbHelp = "I am a type 5 verb!";
-        }
-    else{
-        verbHelp = "I am a type 6 verb!";
-        }
+
+    verbHelp.updateInfo(infinitive, translation, verbType);    
     
     $('#pronoun').html(pronoun);
     $('#infinitive').html(infinitive);
     $("#verb-input").attr("placeholder", infinitive);
     $('#verb-input').val('');
     $('#translation').html(translation);
-    
-    if (verbType != ""){
-        $('#verbTypeTitle').html("verbityypi " + verbType);
-        $('#verbTypeHelp').html(verbHelp);
-    }
-    else{
-        $('#verbTypeTitle').html("verbityypi unknown");
-        $('#verbTypeHelp').html("Anteeksi! We currently do not have information about how to conjugate this verb.");
-    }
-    
-
+       
     window.score.conjugatedVerb = conjugatedVerb;
     window.score.noMistake = 0; // resets every round
     
@@ -149,7 +193,11 @@ $( document ).ready(function() {
         const isCorrect = answer === window.score.conjugatedVerb;
         if (isCorrect) {
             //TODO: create a step that replicates the alert effect of waiting from a user input, and will clear the exercise
-            
+            $('#verb-input').addClass('correct', 300, () => {
+                $('#verb-input').removeClass('correct', 200, () => {
+                    fetchQuestion();
+                })
+            });
             scoreBoard.increaseTotal();
             $('#answerMissed').html('');
             if (window.score.noMistake < 1){                
