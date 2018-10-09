@@ -48,11 +48,10 @@
 
         <div id="background"></div>
 
-        
+    
         <div class="container">
             <div id="question-card" class="card fadeIn slow">
                 
-
                 <form id="answerForm">
                     <div class="d-flex align-middle">
                         <div class="flex-grow-1">
@@ -105,80 +104,83 @@
                 </div>
 
         </div>
-
+      
         <!--MODALS-->
 
         <!--modal info-->
         <div id="info-modal" class="menu-modal modal">
-                <div class="d-flex p-4 justify-content-between">
-                    <h1 class="align-middle"><i class="material-icons p-2 align-middle">info</i>info</h1>    
-                    <a class="close align-middle" data-dismiss="modal"><i class="material-icons p-1 ">clear</i></a>
-                </div>
-                
-                <div class="p-4">
-                    <p>"Opetellaan Suomea" is a web application designed to help you learn & practice Finnish.</p>
-                    <p>In the current exercise, you are given verb in it’s infinitive form, and you must conjugate it to the present tense accordingly to a given pronoun.  The translate window gives you a few tips on how to conjugate verb in Finnish.</p>
-                    <p> Questions?<br>
-                        <a href="http://www.elvann.com/contact" target="_blank">elvann.com/contact</a></p>
-                </div>
+            <div class="d-flex p-4 justify-content-between">
+                <h1 class="align-middle"><i class="material-icons p-2 align-middle">info</i>info</h1>    
+                <a class="close align-middle" data-dismiss="modal"><i class="material-icons p-1 ">clear</i></a>
             </div>
+            
+            <div class="p-4">
+                <p>"Opetellaan Suomea" is a web application designed to help you learn & practice Finnish.</p>
+                <p>In the current exercise, you are given verb in it’s infinitive form, and you must conjugate it to the present tense accordingly to a given pronoun.  The translate window gives you a few tips on how to conjugate verb in Finnish.</p>
+                <p> Questions?<br>
+                    <a href="http://www.elvann.com/contact" target="_blank">elvann.com/contact</a></p>
+
+                <button onclick="window.score.tense = 'present'">Present</button>
+                <button onclick="window.score.tense = 'past'">Past</button>
+            </div>
+        </div>
+
+        <!--modal info-->
+        <div id="translate-modal" class="menu-modal modal">
+            <div class="d-flex p-4 justify-content-between">
+                <h1 class="align-middle"><i class="material-icons p-2 align-middle">translate</i>language</h1>    
+                <a class="close align-middle" data-dismiss="modal"><i class="material-icons p-1 ">clear</i></a>
+            </div>
+            
+            <div class="scroll p-4">
+                <p>Here's a little bit of help to help you help you with this exercise.</p>
+                <h2 id="infinitive"></h2>
+                <p><i class="material-icons p-2 align-middle">translate</i><span id="translation"></span></p>
+                <h2 id="verbTypeTitle"></h2>
+                <p id="verbTypeHelp"></p>
+                <h2>finnish pronouns</h2>
+                <ul>
+                    <li>minä - I</li>
+                    <li>sinä - you</li>
+                    <li>hän - he/she</li>
+                    <li>me - we</li>
+                    <li>te - you (pl.)</li>
+                    <li>he - they</li>
+                </ul>
+                <h2>conjugation stems</h2>
+                <ul>
+                    <li>minä - n</li>
+                    <li>sinä - t</li>
+                    <li>hän - /double vowel</li>
+                    <li>me - mme</li>
+                    <li>te - tte</li>
+                    <li>he - -vat</li>
+            </div>
+        </div>
+
+        <!--END MODALS-->
+
+
+    <footer class="justify-content-center d-none d-sm-flex">
+        design & developement by Elvann ~ elvann.com
+
+    </footer>
+    <!-- SCRIPTS -->
     
-            <!--modal info-->
-            <div id="translate-modal" class="menu-modal modal">
-                <div class="d-flex p-4 justify-content-between">
-                    <h1 class="align-middle"><i class="material-icons p-2 align-middle">translate</i>language</h1>    
-                    <a class="close align-middle" data-dismiss="modal"><i class="material-icons p-1 ">clear</i></a>
-                </div>
-                
-                <div class="scroll p-4">
-                    <p>Here's a little bit of help to help you help you with this exercise.</p>
-                    <h2 id="infinitive"></h2>
-                    <p><i class="material-icons p-2 align-middle">translate</i><span id="translation"></span></p>
-                    <h2 id="verbTypeTitle"></h2>
-                    <p id="verbTypeHelp"></p>
-                    <h2>finnish pronouns</h2>
-                    <ul>
-                        <li>minä - I</li>
-                        <li>sinä - you</li>
-                        <li>hän - he/she</li>
-                        <li>me - we</li>
-                        <li>te - you (pl.)</li>
-                        <li>he - they</li>
-                    </ul>
-                    <h2>conjugation stems</h2>
-                    <ul>
-                        <li>minä - n</li>
-                        <li>sinä - t</li>
-                        <li>hän - /double vowel</li>
-                        <li>me - mme</li>
-                        <li>te - tte</li>
-                        <li>he - -vat</li>
-                </div>
-            </div>
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.11/js/mdb.min.js"></script>
+    <!-- JQuery UI -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-            <!--END MODALS-->
+    <!-- Present Exercises -->
 
-
-        <footer class="justify-content-center d-none d-sm-flex">
-            design & developement by Elvann ~ elvann.com
-
-        </footer>
-        <!-- SCRIPTS -->
-        
-        <!-- JQuery -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <!-- Bootstrap tooltips -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-        <!-- Bootstrap core JavaScript -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
-        <!-- MDB core JavaScript -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.11/js/mdb.min.js"></script>
-        <!-- JQuery UI -->
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-        <!-- Present Exercises -->
-
-        <script src="js/present-exercises.js"></script>
+    <script src="js/present-exercises.js"></script>
 
     </body>
 

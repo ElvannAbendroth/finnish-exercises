@@ -29,7 +29,8 @@ function resetScore(){
 }
 
 function fetchQuestion(){
-    $.get('/question', function(data, status) {
+    const tense = window.score.tense || 'present';
+    $.get('/question?tense=' + tense, function(data, status) {
     /* this code is executed when get requests to my-url returns with a response */
     const pronoun = data.pronoun;
     const conjugatedVerb = data.verb.conjugations[data.tense][pronoun];

@@ -10,12 +10,12 @@ const fs = require('fs');
 const templateEngine = require('../models/templateEngine');
 
 //Wild functions
-function buildRandomQuestion() {
+function buildRandomQuestion(tense) {
   const randomVerbIndex = Math.floor(Math.random() * verbsPresent.length);
   const verb = new Verb(verbsPresent[randomVerbIndex]);
   const randomPronounIndex = Math.floor(Math.random() * pronouns.length);
   const pronoun = pronouns[randomPronounIndex];
-  return new Question(verb, "present", pronoun);
+  return new Question(verb, tense, pronoun);
 }
 
 /* GET home page. */
@@ -26,9 +26,12 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET List of Questions */
-
 router.get('/question', function(req, res, next) {
-  res.send(buildRandomQuestion());  
+  const tense = req.query.tense || 'present';
+  if (!['present', 'past'].includes(tense)) {
+    res.status(400).send('We do not support tense: ' + tense);
+  }
+  res.send(buildRandomQuestion(tense));  
 });
 
 
