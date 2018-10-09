@@ -21,13 +21,7 @@ function buildRandomQuestion() {
 /* GET home page. */
 router.get('/', function(req, res, next) {
   const template = fs.readFileSync(path.join(__dirname, '../view/present.html'), "utf8");
-  const result = templateEngine(
-    template, 
-    '/', 
-    'Index', 
-    '', 
-    'I\'m the index'
-  );
+  const result = templateEngine(template, '/', 'Opetellaan Suomea', '', '');
   res.send(result);
 });
 
