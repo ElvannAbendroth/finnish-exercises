@@ -177,8 +177,7 @@ class QuestionBox {
             </div>
             
             <div id="input-line" class="d-flex p-2">
-                    <input type="text" id="verb-input" name="verb" class="form-control flex-grow-1" placeholder="${infinitive}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-                    <button class="button-icon p-2 d-none d-sm-block" data-toggle="modal" data-target="#translate-modal"><i class="material-icons">help</i></button>
+                    <input type="text" id="verb-input" name="verb" class="form-control flex-grow-1" placeholder="${infinitive}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">           
                     <button type="submit" class="button-icon p-2"><i class="material-icons">send</i></button>
             </div>
             <div class="d-flex" >
@@ -276,8 +275,9 @@ $( document ).ready(function() {
     document.onkeydown = function(evt) {
         evt = evt || window.event;
         if (evt.keyCode == 27) {
-            $('.modal').modal('hide') 
-            console.log('Esc key pressed.');
+            $('.modal').modal('hide');
         }
     };
+
+   
 });
