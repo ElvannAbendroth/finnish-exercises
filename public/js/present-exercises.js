@@ -150,9 +150,10 @@ class QuestionBox {
         const html = `<form id="answerForm">
             <div class="d-flex align-middle">
                 <div class="flex-grow-1">
-                    <h1 class="d-none d-sm-block p-2">${tense} Verb exercises</h1>
+                    <h1 class="d-none d-sm-block p-2">${tense} verb exercises</h1>
                     <p class="d-none d-sm-block p-2">Conjugate the Finnish verb to the present tense with it’s pronoun.</p>                            
                     <h1 id="pronoun" class="p-2">${pronoun}</h1>
+                    
                 </div>
                 
                 <a data-toggle="modal" data-target="#translate-modal"><i class="material-icons p-2">translate</i></a>
@@ -162,10 +163,13 @@ class QuestionBox {
             
             <div id="input-line" class="d-flex p-2">
                     <input type="text" id="verb-input" name="verb" class="form-control flex-grow-1" placeholder="${infinitive}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-                    <button type="submit" class="align-middle p-2"><i class="material-icons p-2">send</i></button>
+                    <button type="submit" class="button-icon p-2"><i class="material-icons">send</i></button>
+            </div>
+            <div class="d-flex" >
+                <small class="p-2">(${tense})</small>
+                <small id="answerMissed" class="p-2"></small>
             </div>
             
-            <small id="answerMissed" class="p-2"></small>
         </form>`;
         $('#' + this.wrapperId).html(html);
 
@@ -173,7 +177,7 @@ class QuestionBox {
     }
 
     showCorrectAnswer(answer) {
-        $('#answerMissed').html('Answer: ' + answer);
+        $('#answerMissed').html('[answer: ' + answer + ']');
     }
 
     clearAnswer() {
