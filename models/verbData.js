@@ -90,6 +90,13 @@ const verbsPresent = [
         "kykenen", "kykenet", "kykenee", "kykenemme", "kykenette", "kykenevät", "kyetään",
         "kykenin", "kykenit", "kykeni", "kykenimme", "kykenitte", "kykenivät", "kyettiin",
         "kykenisin", "kykenisit", "kykenisi", "kykenisimme", "kykenisitte", "kykenisivät", "kyettäisiin"
+    ],
+
+    [
+        "ajatella", "to be able to", 5, 
+        "ajattelen", "ajattelet", "ajattelee", "ajattelemme", "ajattelette", "ajattelevat", "ajatellaan",
+        "ajattelin", "ajattelit", "ajatteli", "ajattelimme", "ajattelitte", "ajattelivat", "ajateltiin",
+        "ajattelisin", "ajattelisit", "ajattelisi", "ajattelisimme", "ajattelisitte", "ajattelisivat", "ajateltaisiin"
     ]
 ];
 
