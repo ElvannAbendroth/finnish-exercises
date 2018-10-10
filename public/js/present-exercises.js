@@ -133,13 +133,13 @@ class QuestionBox {
         const html = `<form id="answerForm">
             <div class="d-flex align-middle">
                 <div class="flex-grow-1">
-                    <h2 class="d-none d-sm-block p-2">${tense} verb exercises</h2>
+                    <h1 class="d-none d-sm-block p-2">${tense} verb exercises</h1>
                     <p class="d-none d-sm-block p-2">Conjugate the Finnish verb to the present tense with it’s pronoun.</p>                            
-                    <h1 id="pronoun" class="p-2">${pronoun}</h1>
+                    <h2 id="pronoun" class="p-2">${pronoun}</h2>
                     
                 </div> 
-                <a class=p-2 d-block d-sm-none" data-toggle="modal" data-target="#translate-modal"><i class="material-icons">help</i></a>
-                <a onclick="fetchQuestion()"><i class="material-icons p-2">clear</i></a>
+                <a class="p-2 d-block d-sm-none" data-toggle="modal" data-target="#translate-modal"><i class="material-icons">help</i></a>
+                <a onclick="fetchQuestion()"><i class="material-icons p-2">refresh</i></a>
 
             </div>
             
