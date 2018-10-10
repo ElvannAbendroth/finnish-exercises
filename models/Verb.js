@@ -6,7 +6,8 @@ class Verb {
         this.type = formsList[2];
 
         const presentOffset = 3;
-        const pastOffset = presentOffset + 6;
+        const pastOffset = presentOffset + 7;
+        const conditionalOffset = pastOffset + 7;
     
         this.conjugations = {
             "present": {
@@ -16,6 +17,7 @@ class Verb {
                 "me": formsList[presentOffset + 3],
                 "te": formsList[presentOffset + 4],
                 "he": formsList[presentOffset + 5],
+                "(passive)": formsList[presentOffset + 6]
             },
             "past": {
                 "minä": formsList[pastOffset + 0],
@@ -24,6 +26,16 @@ class Verb {
                 "me": formsList[pastOffset + 3],
                 "te": formsList[pastOffset + 4],
                 "he": formsList[pastOffset + 5],
+                "(passive)": formsList[pastOffset + 6]
+            },
+            "conditional": {
+                "minä": formsList[conditionalOffset + 0],
+                "sinä": formsList[conditionalOffset + 1],
+                "hän": formsList[conditionalOffset + 2],
+                "me": formsList[conditionalOffset + 3],
+                "te": formsList[conditionalOffset + 4],
+                "he": formsList[conditionalOffset + 5],
+                "(passive)": formsList[conditionalOffset + 6]
             }
         };
     }

@@ -36,8 +36,11 @@
         </div>
         
         <div class="d-flex justify-content-end">
+                <a onclick="resetScore()"><i class="material-icons p-2">refresh</i></a> 
                 <a data-toggle="modal" data-target="#info-modal"><i class="material-icons p-2">info</i></a>
-                <a onclick="resetScore()"><i class="material-icons p-2">refresh</i></a>        
+                <a data-toggle="modal" data-target="#settings-modal"><i class="material-icons p-2">settings</i></a>
+                
+
         </div>
         
     </nav>
@@ -69,10 +72,27 @@
                 <p>"Opetellaan Suomea" is a web application designed to help you learn & practice Finnish.</p>
                 <p>In the current exercise, you are given verb in it’s infinitive form, and you must conjugate it to the present tense accordingly to a given pronoun.  The translate window gives you a few tips on how to conjugate verb in Finnish.</p>
                 <p> Questions?<br>
-                    <a href="http://www.elvann.com/contact" target="_blank">elvann.com/contact</a></p>
+                    <a href="http://www.elvann.com/contact" target="_blank">elvann.com/contact</a></p><br>
 
-                <button onclick="setTense('present')">Present</button>
-                <button onclick="setTense('past')">Past</button>
+                
+            </div>
+        </div>
+
+        <div id="settings-modal" class="menu-modal modal">
+            <div class="d-flex p-4 justify-content-between">
+                <h1><i class="material-icons p-2 align-middle">settings</i>options</h1>   
+                <a class="close align-middle" data-dismiss="modal"><i class="material-icons p-1 ">clear</i></a>
+            </div>
+            
+            <div class="p-4">
+                <h2 class="p-2">verb exercises</h2>                
+                <div class="d-flex flex-column">
+                    <button class="btn btn-primary btn-sm" onclick="setTense('present')">present</button>
+                    <button class="btn btn-primary btn-sm" onclick="setTense('past')">past</button>
+                    <button class="btn btn-primary btn-sm " onclick="setTense('conditional')">conditional</button>
+                </div>
+
+                
             </div>
         </div>
 

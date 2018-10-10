@@ -186,3 +186,19 @@ textarea:focus, input:focus, #verb-input:focus {
   border-style: none;
 
 }
+
+.btn-primary{
+  background-color:#5E4FBA !important;
+}
+
+.btn-primary:active{
+  background-color: darken(#5E4FBA, 10% ) !important;
+}
+
+.btn-primary:active .btn-primary:focus{
+  background-color: darken(#5E4FBA, 10% ) !important;
+}
+
+.btn-primary:hover {
+  background-color: lighten(#5E4FBA, 10% ) !important;
+}
