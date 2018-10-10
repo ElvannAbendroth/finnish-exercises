@@ -36,9 +36,7 @@
         </div>
         
         <div class="d-flex justify-content-end">
-                <a onclick="resetScore()"><i class="material-icons p-2">refresh</i></a> 
-                <a data-toggle="modal" data-target="#info-modal"><i class="material-icons p-2">info</i></a>
-                <a data-toggle="modal" data-target="#settings-modal"><i class="material-icons p-2">settings</i></a>
+                <a data-toggle="modal" data-target="#menu-modal"><i class="material-icons p-2">menu</i></a>
                 
 
         </div>
@@ -61,7 +59,7 @@
       
         <!--MODALS-->
 
-        <!--modal info-->
+        <!--info modal -->
         <div id="info-modal" class="menu-modal modal">
             <div class="d-flex p-4 justify-content-between">
                 <h1 class="align-middle"><i class="material-icons p-2 align-middle">info</i>info</h1>    
@@ -77,26 +75,122 @@
                 
             </div>
         </div>
+        
+        <!--pronoun modal -->
+        <div id="pronoun-modal" class="menu-modal modal">
+                <div class="d-flex p-4 justify-content-between">
+                    <h1 class="align-middle"><i class="material-icons p-2 align-middle">star</i>pronouns</h1>    
+                    <a class="close align-middle" data-dismiss="modal"><i class="material-icons p-1 ">clear</i></a>
+                </div>
+                
+                <div class="p-4">
+                    <p>Here are the pronouns in Finnish as well as their english counterpart.  N.B. "he" is used in formal situation instead of "hän"</p>
+                    <ul>
+                        <li>minä - I</li>
+                        <li>sinä - you</li>
+                        <li>hän - he/she</li>
+                        <li>me - we</li>
+                        <li>te - you (pl.)</li>
+                        <li>he - they</li>
+                    </ul>
+                </div>
+                <button data-dismiss="modal" class="btn btn-menu" data-toggle="modal" data-target="#menu-modal"><i class="material-icons p-2 align-middle">arrow_back_ios</i>return</button>
+                
+        </div>
 
-        <div id="settings-modal" class="menu-modal modal">
+        <!--consonant modal -->
+        <div id="consonant-modal" class="menu-modal modal">
             <div class="d-flex p-4 justify-content-between">
-                <h1><i class="material-icons p-2 align-middle">settings</i>options</h1>   
+                <h1 class="align-middle"><i class="material-icons p-2 align-middle">star</i>consonant gradation</h1>    
                 <a class="close align-middle" data-dismiss="modal"><i class="material-icons p-1 ">clear</i></a>
             </div>
             
             <div class="p-4">
-                <h2 class="p-2">verb exercises</h2>                
-                <div class="d-flex flex-column">
-                    <button class="btn btn-primary btn-sm" onclick="setTense('present')">present</button>
-                    <button class="btn btn-primary btn-sm" onclick="setTense('past')">past</button>
-                    <button class="btn btn-primary btn-sm " onclick="setTense('conditional')">conditional</button>
-                </div>
-
-                
+                <p>Some Finnish words go under <i>consonant gradation</i> when conjugated.  Here's a table containing the "strong > weak" consonant combinations to apply this gradation. </p>
+                <ul>
+                    <li>pp > p</li>
+                    <li>tt > t</li>
+                    <li>kk ></li>
+                    <li>k > ø </li>
+                    <li>p > v</li>
+                    <li>t > d</li>
+                    <li>nk > ng</li>
+                    <li>nt > nn</li>
+                    <li>lt > ll</li>
+                    <li>rt > rr</li>
+                    <li>mp > mm</li>
+                </ul>
             </div>
+            <button data-dismiss="modal" class="btn btn-menu" data-toggle="modal" data-target="#menu-modal"><i class="material-icons p-2 align-middle">arrow_back_ios</i>return</button>
+            <br><br>
         </div>
 
-        <!--modal info-->
+        <!--consonant modal -->
+        <div id="conjugation-modal" class="menu-modal modal">
+            <div class="d-flex p-4 justify-content-between">
+                <h1 class="align-middle"><i class="material-icons p-2 align-middle">star</i>verb conjugation</h1>    
+                <a class="close align-middle" data-dismiss="modal"><i class="material-icons p-1 ">clear</i></a>
+            </div>
+
+            <div class="p-4">
+
+                <h2>conjugation stems</h2>
+                <ul>
+                    <li>minä - n</li>
+                    <li>sinä - t</li>
+                    <li>hän - /double vowel</li>
+                    <li>me - mme</li>
+                    <li>te - tte</li>
+                    <li>he - -vat</li>
+                </ul>
+
+                
+                
+            </div>
+            <button data-dismiss="modal" class="btn btn-menu" data-toggle="modal" data-target="#menu-modal"><i class="material-icons p-2 align-middle">arrow_back_ios</i>return</button>
+            <br><br>
+        </div>
+
+        
+
+        <!--menu modal-->
+
+        <div id="menu-modal" class="menu-modal modal">
+                <div class="d-flex p-4 justify-content-between">
+                    <h1><i class="material-icons p-2 align-middle">menu</i>menu</h1>
+                    <a class="close align-middle" data-dismiss="modal"><i class="material-icons p-1 ">clear</i></a>
+                </div>
+                
+                <div class="">              
+                    <div class="d-flex flex-column">
+
+                        <h2 class="p-4"><i class="material-icons p-2 align-middle">school</i>learn finnish</h2>
+                        <button data-dismiss="modal" class="btn btn-menu" data-toggle="modal" data-target="#pronoun-modal"><i class="material-icons p-2 align-middle">star</i>pronouns</button>
+                        <button data-dismiss="modal" class="btn btn-menu" data-toggle="modal" data-target="#consonant-modal"><i class="material-icons p-2 align-middle">star</i>consonant gradation</button>
+                        <button data-dismiss="modal" class="btn btn-menu" data-toggle="modal" data-target="#conjugation-modal"><i class="material-icons p-2 align-middle">star</i>verb conjugaison</button> 
+                        
+
+
+                        <h2 class="p-4"><i class="material-icons p-2 align-middle">settings</i>exercise settings</h2>  
+                        <button class="btn btn-menu" data-dismiss="modal" onclick="setTense('present')"><i class="material-icons p-2 align-middle">check</i>present tense</button>
+                        <button class="btn btn-menu" data-dismiss="modal" onclick="setTense('past')"><i class="material-icons p-2 align-middle">check</i>past tense</button>
+                        <button class="btn btn-menu" data-dismiss="modal" onclick="setTense('conditional')"><i class="material-icons p-2 align-middle">check</i>conditional mood</button>
+                        <hr>
+                        <button data-dismiss="modal" class="btn btn-menu" onclick="resetScore()"><i class="material-icons p-2 align-middle">refresh</i>reset score</button>
+                        <button data-dismiss="modal" class="btn btn-menu" data-toggle="modal" data-target="#info-modal"><i class="material-icons p-2 align-middle">info</i>about</button>
+                        <br>
+                        <!--<a onclick="resetScore()"><i class="material-icons p-2">refresh</i></a> 
+                        <a data-toggle="modal" data-target="#info-modal"><i class="material-icons p-2">info</i></a>
+                        <a data-toggle="modal" data-target="#settings-modal"><i class="material-icons p-2">settings</i></a>
+                        <a data-toggle="modal" data-target="#menu-modal"><i class="material-icons p-2">menu</i></a> -->
+                    </div>
+    
+                    
+                </div>
+            </div>
+
+        <!--translate modal-->
+        
         <div id="translate-modal" class="menu-modal modal"></div>
 
         <!--END MODALS-->

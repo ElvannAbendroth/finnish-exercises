@@ -86,15 +86,6 @@ class VerbHelp {
             <p><i class="material-icons p-2 align-middle">translate</i><span id="translation">${translation}</span></p>
             <h2 id="verbTypeTitle">${verbTypeTitle}</h2>
             <p id="verbTypeHelp">${this._getVerbHelp(type)}</p>
-            <h2>finnish pronouns</h2>
-            <ul>
-                <li>minä - I</li>
-                <li>sinä - you</li>
-                <li>hän - he/she</li>
-                <li>me - we</li>
-                <li>te - you (pl.)</li>
-                <li>he - they</li>
-            </ul>
             <h2>conjugation stems</h2>
             <ul>
                 <li>minä - n</li>
