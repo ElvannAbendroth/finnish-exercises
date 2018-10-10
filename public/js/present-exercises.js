@@ -86,15 +86,7 @@ class VerbHelp {
             <p><i class="material-icons p-2 align-middle">translate</i><span id="translation">${translation}</span></p>
             <h2 id="verbTypeTitle">${verbTypeTitle}</h2>
             <p id="verbTypeHelp">${this._getVerbHelp(type)}</p>
-            <h2>conjugation stems</h2>
-            <ul>
-                <li>minä - n</li>
-                <li>sinä - t</li>
-                <li>hän - /double vowel</li>
-                <li>me - mme</li>
-                <li>te - tte</li>
-                <li>he - -vat</li>
-            </ul>
+            
         </div>`;
         $('#' + this.wrapperId).html(html);
     }
@@ -141,19 +133,19 @@ class QuestionBox {
         const html = `<form id="answerForm">
             <div class="d-flex align-middle">
                 <div class="flex-grow-1">
-                    <h1 class="d-none d-sm-block p-2">${tense} verb exercises</h1>
+                    <h2 class="d-none d-sm-block p-2">${tense} verb exercises</h2>
                     <p class="d-none d-sm-block p-2">Conjugate the Finnish verb to the present tense with it’s pronoun.</p>                            
                     <h1 id="pronoun" class="p-2">${pronoun}</h1>
                     
-                </div>
-                
-                <a data-toggle="modal" data-target="#translate-modal"><i class="material-icons p-2">translate</i></a>
+                </div> 
+                <a class=p-2 d-block d-sm-none" data-toggle="modal" data-target="#translate-modal"><i class="material-icons">help</i></a>
                 <a onclick="fetchQuestion()"><i class="material-icons p-2">clear</i></a>
 
             </div>
             
             <div id="input-line" class="d-flex p-2">
                     <input type="text" id="verb-input" name="verb" class="form-control flex-grow-1" placeholder="${infinitive}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                    <button class="button-icon p-2 d-none d-sm-block" data-toggle="modal" data-target="#translate-modal"><i class="material-icons">help</i></button>
                     <button type="submit" class="button-icon p-2"><i class="material-icons">send</i></button>
             </div>
             <div class="d-flex" >
