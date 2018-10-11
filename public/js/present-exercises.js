@@ -212,6 +212,18 @@ const questionBox = new QuestionBox('question-card', submitQuestion);
 window.score = { };
 window.score.tense = 'present';
 
+
+function closeModal(modalID){
+
+    $(modalID).addClass('fadeOut', 1, () => {
+        $(modalID).modal('hide');
+        $(modalID).removeClass('fadeOut');
+    });
+    
+
+
+}
+
 function setTense(tense) {
     window.score.tense = tense;
     fetchQuestion();
