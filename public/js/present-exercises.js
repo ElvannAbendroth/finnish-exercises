@@ -213,15 +213,13 @@ window.score = { };
 window.score.tense = 'present';
 
 
-function closeModal(modalID){
+function closeModal(modalID){    
+    $(modalID).addClass('fadeOut');
 
-    $(modalID).addClass('fadeOut', 1, () => {
+    setTimeout(() => {
         $(modalID).modal('hide');
         $(modalID).removeClass('fadeOut');
-    });
-    
-
-
+    }, 2000);
 }
 
 function setTense(tense) {
