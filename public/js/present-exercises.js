@@ -171,7 +171,7 @@ class QuestionBox {
                     <h2 id="pronoun" class="p-2">${pronoun}</h2>
                     
                 </div> 
-                <a class="p-2 d-block d-sm-none" data-toggle="modal" data-target="#translate-modal"><i class="material-icons">help</i></a>
+                <a class="p-2" data-toggle="modal" data-target="#translate-modal"><i class="material-icons">help</i></a>
                 <a onclick="fetchQuestion()"><i class="material-icons p-2">refresh</i></a>
 
             </div>
@@ -181,7 +181,7 @@ class QuestionBox {
                     <button type="submit" class="button-icon p-2"><i class="material-icons">send</i></button>
             </div>
             <div class="d-flex" >
-                <small class="p-2">(${tense})</small>
+                <small class="p-2 d-block d-sm-none">(${tense})</small>
                 <small id="answerMissed" class="p-2"></small>
             </div>
             
