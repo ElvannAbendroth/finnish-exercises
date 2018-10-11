@@ -162,9 +162,14 @@ textarea:focus, input:focus, #verb-input:focus {
     }
 }
 
-@media only screen and (max-width: 540px) {
-    
-  
+
+@media only screen and (min-width: 512px){
+
+  .menu-modal {
+    width:450px;
+    left:auto;
+
+  }
 }
 
 @media only screen and (min-width: 720px) {
