@@ -216,10 +216,31 @@ window.score.tense = 'present';
 function closeModal(modalID){    
     $(modalID).addClass('fadeOut');
 
+    let timeOut = 1000;
+    if ($(modalID).hasClass('slow')) {
+        timeOut = 1500;
+    } else if ($(modalID).hasClass('slower')) {
+        timeOut = 2000;
+    } else if ($(modalID).hasClass('fast')) {
+        timeOut = 500;
+    }
+
+    if (($(modalID).hasClass('delay-1s'))) {
+        timeOut += 1000;
+    } else if (($(modalID).hasClass('delay-2s'))) {
+        timeOut += 2000;
+    } else if (($(modalID).hasClass('delay-3s'))) {
+        timeOut += 3000;
+    } else if (($(modalID).hasClass('delay-4s'))) {
+        timeOut += 4000;
+    } else if (($(modalID).hasClass('delay-5s'))) {
+        timeOut += 5000;
+    } 
+
     setTimeout(() => {
         $(modalID).modal('hide');
         $(modalID).removeClass('fadeOut');
-    }, 2000);
+    }, timeOut);
 }
 
 function setTense(tense) {
