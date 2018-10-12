@@ -70,12 +70,16 @@ class VerbHelp {
 
     constructor (wrapperId) {
         this.wrapperId = wrapperId;
+        this.html = '';
     }
 
+    updateHtml() {
+        $('#' + this.wrapperId).html(this.html);
+    }
+    
     updateInfo (infinitive, translation, type) {
         //const verbTypeTitle = 'verbityyppi ' + (type || 'unknown');
-
-        const html = `<div class="d-flex p-4 justify-content-between align-middle">
+        this.html = `<div class="d-flex p-4 justify-content-between align-middle">
             <h1 class="align-bottom"><i class="material-icons p-2 align-middle">help</i>help</h1>    
             <a class="close align-middle closebtn" onclick="closeNav()" ><i class="material-icons p-1 ">clear</i></a>        </div>
     
@@ -86,7 +90,6 @@ class VerbHelp {
             <p id="verbTypeHelp">${this._getVerbHelp(type, infinitive)}</p>
             
         </div>`;
-        $('#' + this.wrapperId).html(html);
     }
 
     _getVerbHelp(type, infinitive) {
@@ -213,7 +216,7 @@ window.score = { };
 window.score.tense = 'present';
 
 function openHelp() {
-    verbHelp.updateInfo ("rakastaa" , "to love", 1)
+    verbHelp.updateHtml();
     document.getElementById("mainNav").style.width = "100%";
 }
 
