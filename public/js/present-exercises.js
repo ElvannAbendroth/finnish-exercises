@@ -77,8 +77,7 @@ class VerbHelp {
 
         const html = `<div class="d-flex p-4 justify-content-between align-middle">
             <h1 class="align-bottom"><i class="material-icons p-2 align-middle">help</i>help</h1>    
-            <a class="close align-middle" data-dismiss="modal"><i class="material-icons p-1 ">clear</i></a>
-        </div>
+            <a class="close align-middle closebtn" onclick="closeNav()" ><i class="material-icons p-1 ">clear</i></a>        </div>
     
         <div class="scroll p-4">
             <p>Here's a little bit of info to help you help you with this exercise.</p>
@@ -162,6 +161,7 @@ class QuestionBox {
         });
     }
 
+
     setQuestion(tense, pronoun, infinitive) {
         const html = `<form id="answerForm">
             <div class="d-flex align-middle">
@@ -171,7 +171,7 @@ class QuestionBox {
                     <h2 id="pronoun" class="p-2">${pronoun}</h2>
                     
                 </div> 
-                <a class="p-2" data-toggle="modal" data-target="#translate-modal"><i class="material-icons">help</i></a>
+                <a class="p-2" data-toggle="modal" onclick="openHelp()"><i class="material-icons">help</i></a>
                 <a onclick="fetchQuestion()"><i class="material-icons p-2">refresh</i></a>
 
             </div>
@@ -206,12 +206,27 @@ class QuestionBox {
 }
 
 const scoreBoard = new ScoreBoard('score');
-const verbHelp = new VerbHelp('translate-modal');
+const verbHelp = new VerbHelp('mainNav');
 const questionBox = new QuestionBox('question-card', submitQuestion);
 
 window.score = { };
 window.score.tense = 'present';
 
+function openHelp() {
+    const tense = window.score.tense || 'present';
+    $.get('/question?tense=' + tense, function(data, status) {
+        /* this code is executed when get requests to my-url returns with a response */
+        const pronoun = data.pronoun;
+        const conjugatedVerb = data.verb.conjugations[data.tense][pronoun];
+        const infinitive = data.verb.infinitive;
+        const translation = data.verb.translation;
+        const verbType = data.verb.type;
+
+        verbHelp.updateInfo(infinitive, translation, verbType);
+    });
+   
+    document.getElementById("mainNav").style.width = "100%";
+}
 
 function closeModal(modalID, fadeOutAnimationLength){    
     $(modalID).addClass('fadeOut');
@@ -288,6 +303,8 @@ $( document ).ready(function() {
             $('.modal').modal('hide');
         }
     };
+
+    navigationContent();
 
    
 });
