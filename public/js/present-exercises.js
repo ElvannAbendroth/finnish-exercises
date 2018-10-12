@@ -213,7 +213,6 @@ window.score = { };
 window.score.tense = 'present';
 
 function openHelp() {
-    
     verbHelp.updateInfo ("rakastaa" , "to love", 1)
     document.getElementById("mainNav").style.width = "100%";
 }
@@ -238,6 +237,7 @@ function resetScore(){
 }
 
 function fetchQuestion() {
+    closeNav();
     const tense = window.score.tense || 'present';
     $.get('/question?tense=' + tense, function(data, status) {
         /* this code is executed when get requests to my-url returns with a response */
