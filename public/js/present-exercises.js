@@ -213,18 +213,8 @@ window.score = { };
 window.score.tense = 'present';
 
 function openHelp() {
-    const tense = window.score.tense || 'present';
-    $.get('/question?tense=' + tense, function(data, status) {
-        /* this code is executed when get requests to my-url returns with a response */
-        const pronoun = data.pronoun;
-        const conjugatedVerb = data.verb.conjugations[data.tense][pronoun];
-        const infinitive = data.verb.infinitive;
-        const translation = data.verb.translation;
-        const verbType = data.verb.type;
-
-        verbHelp.updateInfo(infinitive, translation, verbType);
-    });
-   
+    
+    verbHelp.updateInfo ("rakastaa" , "to love", 1)
     document.getElementById("mainNav").style.width = "100%";
 }
 
