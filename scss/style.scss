@@ -2,8 +2,10 @@
 body {
   background: #5E4FBA;
   height: 100%;
+  width:100%;
   color: #fff;
-  font-family: 'Montserrat', sans-serif; }
+  font-family: 'Montserrat', sans-serif; 
+  overflow-x:hidden;}
 
 #background {
   position: fixed;
@@ -15,7 +17,8 @@ body {
   background: -o-linear-gradient(119.4deg, #4176A8 0%, rgba(255, 255, 255, 0) 100%), #5E4FBA;
   background: linear-gradient(330.6deg, #4176A8 0%, rgba(255, 255, 255, 0) 100%), #5E4FBA;
   background-repeat: no-repeat;
-  z-index: -2; }
+  z-index: -2;
+  overflow-x:hidden; }
 
 #pageTitle{
   margin: 0.9em;;
