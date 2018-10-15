@@ -1,13 +1,23 @@
 class App {
 
+    constructor (){
+        this._sideNav = new SideNav('mainNav')
+
+    }
     
     run(){
         
-        const _sideNav = new SideNav('mainNav')
-        _sideNav.bindEvents();
-        _sideNav.closeNav();
-       
         fetchQuestion();
+        //const _sideNav = new SideNav('mainNav')
+        this._sideNav.bindEvents();
+        this._sideNav.closeNav();
+       
+        
+    }
+
+    getsideNav(){
+        return this._sideNav;
+
     }
 
 }
@@ -283,6 +293,7 @@ class QuestionBox {
 
 }
 
+const app = new App();
 const scoreBoard = new ScoreBoard('score');
 const verbHelp = new VerbHelp('mainNav');
 const questionBox = new QuestionBox('question-card', submitQuestion);
@@ -313,7 +324,8 @@ function fetchQuestion() {
 
         verbHelp.updateInfo(infinitive, translation, verbType);
 
-        questionBox.setQuestion(tense, pronoun, infinitive);       
+        questionBox.setQuestion(tense, pronoun, infinitive);
+        app._sideNav.bindEvents();
         window.score.conjugatedVerb = conjugatedVerb;
         window.score.noMistake = 0; // resets every round
     });
@@ -455,7 +467,7 @@ const navigationHtmls = {
 $( document ).ready(function() {
     /* This code gets executed when the page loads */
     
-    const app = new App();
+    
     app.run();   
 
     /*document.onkeydown = function(evt) {
