@@ -6,6 +6,8 @@ class App {
         const _sideNav = new SideNav('mainNav')
         _sideNav.bindEvents();
         _sideNav.closeNav();
+       
+        fetchQuestion();
     }
 
 }
@@ -311,8 +313,7 @@ function fetchQuestion() {
 
         verbHelp.updateInfo(infinitive, translation, verbType);
 
-        questionBox.setQuestion(tense, pronoun, infinitive);
-;        
+        questionBox.setQuestion(tense, pronoun, infinitive);       
         window.score.conjugatedVerb = conjugatedVerb;
         window.score.noMistake = 0; // resets every round
     });
@@ -453,17 +454,16 @@ const navigationHtmls = {
 
 $( document ).ready(function() {
     /* This code gets executed when the page loads */
+    
     const app = new App();
     app.run();   
-    
-    fetchQuestion();
 
-    document.onkeydown = function(evt) {
+    /*document.onkeydown = function(evt) {
         evt = evt || window.event;
         if (evt.keyCode == 27) {
             $('.modal').modal('hide');
         }
-    };
+    };*/
 
     
 
