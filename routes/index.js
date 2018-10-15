@@ -20,7 +20,7 @@ function buildRandomQuestion(tense) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  const template = fs.readFileSync(path.join(__dirname, '../view/present.html'), "utf8");
+  const template = fs.readFileSync(path.join(__dirname, '../view/index.html'), "utf8");
   const result = templateEngine(template, '/', 'Opetellaan Suomea', '', '');
   res.send(result);
 });
