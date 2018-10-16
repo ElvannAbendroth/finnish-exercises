@@ -19,7 +19,7 @@ function buildRandomQuestion() {
 function buildRandomExercise(amount) {
     var i;
     var array = [];
-    for (i = 0; i < amount; i++) { 
+    for (i = 0; i < amount; i++) {
         var randomVerb = buildRandomQuestion();
         array.push(randomVerb);
     }
@@ -38,7 +38,7 @@ function runExercise(index) {
     else if (index === verbExercises.length - 1) {
         console.log("Awwww yissss! You're done!")
         rl.close();
-    } 
+    }
     else {
         console.log("Awwww yissss! To the next question!")
         runExercise(index + 1);

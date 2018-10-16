@@ -1,5 +1,5 @@
 class ScoreBoard {
-    
+
     constructor (wrapperId) {
         this.wrapperId = wrapperId;
         this.success = 0;
@@ -21,7 +21,7 @@ class ScoreBoard {
     increaseTotal() { this.setScore(this.success, this.missed, this.total + 1); }
 
     setScore(success, missed, total) {
-        const html = 
+        const html =
         `<div class="d-flex">
             <div class="flex-grow-1">
                 <span id="success" class="score-number ">${success}</span><br>

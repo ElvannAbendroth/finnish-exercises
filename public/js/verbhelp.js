@@ -8,35 +8,35 @@ class VerbHelp {
     updateHtml() {
         $('#' + this.wrapperId).html(this.html);
     }
-    
+
     updateInfo (infinitive, translation, type) {
         //const verbTypeTitle = 'verbityyppi ' + (type || 'unknown');
         this.html = `<div class="d-flex p-4 justify-content-between align-middle">
-                <h1 class="align-bottom"><i class="material-icons p-2 align-middle">help</i>help</h1>    
+                <h1 class="align-bottom"><i class="material-icons p-2 align-middle">help</i>help</h1>
                 <a id="closeIcon" class="close align-middle closebtn"><i  class="material-icons p-1 ">clear</i></a>
             </div>
-    
+
         <div class="scroll p-4">
             <p>Here's a little bit of info to help you help you with this exercise.</p>
             <h2 id="infinitive">${infinitive}</h2>
             <p><i class="material-icons p-2 align-middle">translate</i><span id="translation">${translation}</span></p>
             <p id="verbTypeHelp">${this._getVerbHelp(type, infinitive)}</p>
-            
+
         </div>`;
     }
 
     _getVerbHelp(type, infinitive) {
         //let infinitive_cap = this.infinitive.charAt(0).toUpperCase()
-        
+
         switch (type) {
-            case 1: 
+            case 1:
                 return `<h2>verbityypi i</h2>
                 <p>endings: -Va/-Vä (V = any vowel)</p>
                 <ul>
                     <li>In the present form, remove -a or -ä from the infinitive and add the stem.</li>
                     <li>This type of verb might undergo a strong > weak <i>consonnant gradation</i> on 1st & second person singular and plural.</li>
                 </ul>`;
-            case 2: 
+            case 2:
                 return `<h2>verbityypi ii</h2>
                 <p>endings: -da/-dä</p>
                 <ul>

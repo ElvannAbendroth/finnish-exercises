@@ -31,7 +31,7 @@ router.get('/question', function(req, res, next) {
   if (!['present', 'past', 'conditional'].includes(tense)) {
     res.status(400).send('We do not support tense: ' + tense);
   }
-  res.send(buildRandomQuestion(tense));  
+  res.send(buildRandomQuestion(tense));
 });
 
 
