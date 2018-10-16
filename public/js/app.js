@@ -2,6 +2,9 @@ class App {
 
     constructor (){
         this._sideNav = new SideNav('mainNav')
+        this._questionBox = new QuestionBox('question-card', submitQuestion);
+        this._verbHelp = new VerbHelp('mainNav');
+        this._scoreBoard = new ScoreBoard('score');
 
     }
     
@@ -22,13 +25,18 @@ class App {
 
 }
 
+class Exercise {
+
+    
+}
+
 const app = new App();
-const scoreBoard = new ScoreBoard('score');
-const verbHelp = new VerbHelp('mainNav');
-const questionBox = new QuestionBox('question-card', submitQuestion);
 
 window.score = { };
 window.score.tense = 'present';
+
+
+// MOVE TO CLASSES
 
 function setTense(tense) {
     window.score.tense = tense;
@@ -37,7 +45,7 @@ function setTense(tense) {
 }
 
 function resetScore(){
-    scoreBoard.setScore(0, 0, 0);
+    app._scoreBoard.setScore(0, 0, 0);
 }
 
 function fetchQuestion() {
@@ -51,9 +59,9 @@ function fetchQuestion() {
         const translation = data.verb.translation;
         const verbType = data.verb.type;
 
-        verbHelp.updateInfo(infinitive, translation, verbType);
+        app._verbHelp.updateInfo(infinitive, translation, verbType);
 
-        questionBox.setQuestion(tense, pronoun, infinitive);
+        app._questionBox.setQuestion(tense, pronoun, infinitive);
         app._sideNav.bindEvents();
         window.score.conjugatedVerb = conjugatedVerb;
         window.score.noMistake = 0; // resets every round
@@ -61,7 +69,7 @@ function fetchQuestion() {
 }
 
 function submitQuestion() {
-    const isCorrect = questionBox.getAnswer() === window.score.conjugatedVerb;
+    const isCorrect = app._questionBox.getAnswer() === window.score.conjugatedVerb;
     if (isCorrect) {
         //TODO: create a step that replicates the alert effect of waiting from a user input, and will clear the exercise
         $('#verb-input').addClass('correct', 300, () => {
@@ -69,29 +77,27 @@ function submitQuestion() {
                 fetchQuestion();
             })
         });
-        scoreBoard.increaseTotal();
+        app._scoreBoard.increaseTotal();
         if (window.score.noMistake < 1){                
-            scoreBoard.increaseSuccess();
+            app._scoreBoard.increaseSuccess();
         }
     } else {
         $('#verb-input').addClass('wrong', 300, () => {
             $('#verb-input').removeClass('wrong', 200);
         });
-        questionBox.clearAnswer();
+        app._questionBox.clearAnswer();
         if (window.score.noMistake < 1){
-            scoreBoard.increaseMissed();
+            app._scoreBoard.increaseMissed();
         } if (window.score.noMistake >= 2){
-            questionBox.showCorrectAnswer(window.score.conjugatedVerb);
+            app._questionBox.showCorrectAnswer(window.score.conjugatedVerb);
         }
         window.score.noMistake += 1;
     }
 }
 
+//
 
-class QuestionData {
 
-    
-}
 
 
 const navigationHtmls = {
