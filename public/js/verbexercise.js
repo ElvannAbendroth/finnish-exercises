@@ -6,7 +6,7 @@ class VerbExercise {
     }
 
     fetchQuestion() {
-        const tense = this.tense;
+        const that = this;
 
         $.get('/question?tense=' + this.tense, function(data, status) {
             /* this code is executed when get requests to my-url returns with a response */
@@ -17,7 +17,7 @@ class VerbExercise {
             const verbType = data.verb.type;
 
             app._verbHelp.updateInfo(infinitive, translation, verbType);
-            app._questionBox.setQuestion(tense, pronoun, infinitive); //sets HTMLs
+            app._questionBox.setQuestion(that.tense, pronoun, infinitive); //sets HTMLs
             app._sideNav.bindEvents();
             window.score.conjugatedVerb = conjugatedVerb;
             window.score.noMistake = 0;
