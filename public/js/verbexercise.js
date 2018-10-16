@@ -10,17 +10,13 @@ class VerbExercise {
 
         $.get('/question?tense=' + this.tense, function(data, status) {
             /* this code is executed when get requests to my-url returns with a response */
-            const pronoun = data.pronoun;
-            const conjugatedVerb = data.verb.conjugations[data.tense][pronoun];
-            const infinitive = data.verb.infinitive;
-            const translation = data.verb.translation;
-            const verbType = data.verb.type;
+            that.pronoun = data.pronoun;
+            that.conjugatedVerb = data.verb.conjugations[data.tense][data.pronoun];
+            that.infinitive = data.verb.infinitive;
+            that.translation = data.verb.translation;
+            that.verbType = data.verb.type;
 
-            app._verbHelp.updateInfo(infinitive, translation, verbType);
-            app._questionBox.setQuestion(that.tense, pronoun, infinitive); //sets HTMLs
-            app._sideNav.bindEvents();
-            window.score.conjugatedVerb = conjugatedVerb;
-            window.score.noMistake = 0;
+            app.update();
         });
     }
 

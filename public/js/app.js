@@ -14,6 +14,14 @@ class App {
         this._sideNav.closeNav();
     }
 
+    update() {
+        this._verbHelp.updateInfo(this._verbExercise.infinitive, this._verbExercise.translation, this._verbExercise.verbType);
+        this._questionBox.setQuestion(this._verbExercise.tense, this._verbExercise.pronoun, this._verbExercise.infinitive); //sets HTMLs
+        this._sideNav.bindEvents();
+        window.score.conjugatedVerb = this._verbExercise.conjugatedVerb;
+        window.score.noMistake = 0;
+    }
+
 }
 
 const app = new App();
