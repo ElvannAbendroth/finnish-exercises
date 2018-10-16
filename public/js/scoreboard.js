@@ -64,4 +64,8 @@ class ScoreBoard {
         this.total = total;
     }
 
+    resetScore(){
+        this.setScore(0, 0, 0);
+    }
+
 }

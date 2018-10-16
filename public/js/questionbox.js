@@ -1,8 +1,8 @@
 class QuestionBox {
 
-    constructor (wrapperId, onSubmit) {
+    constructor (wrapperId) {
         this.wrapperId = wrapperId;
-        this.onSubmit = onSubmit;
+        //this.onSubmit = onSubmit;
         this.setQuestion('', '', '');
         $('#' + this.wrapperId).submit((event) => {
             event.preventDefault();
@@ -21,7 +21,7 @@ class QuestionBox {
                     
                 </div> 
                 <a id="helpIcon" class="p-2"><i class="material-icons">help</i></a>
-                <a onclick="fetchQuestion()"><i class="material-icons p-2">refresh</i></a>
+                <a id="refreshIcon"><i class="material-icons p-2">refresh</i></a>
 
             </div>
             
@@ -30,7 +30,7 @@ class QuestionBox {
                     <button type="submit" class="button-icon p-2"><i class="material-icons">send</i></button>
             </div>
             <div class="d-flex" >
-                <small class="p-2 d-block d-sm-none">(${tense})</small>
+                <small class="p-2 d-block">(${tense})</small>
                 <small id="answerMissed" class="p-2"></small>
             </div>
             
@@ -50,6 +50,33 @@ class QuestionBox {
 
     getAnswer() {
         return $('#verb-input').val();
+    }
+
+    onSubmit() {
+        const isCorrect = app._questionBox.getAnswer() === window.score.conjugatedVerb;
+        if (isCorrect) {
+            //TODO: create a step that replicates the alert effect of waiting from a user input, and will clear the exercise
+            $('#verb-input').addClass('correct', 300, () => {
+                $('#verb-input').removeClass('correct', 200, () => {
+                    app._verbExercise.fetchQuestion();
+                })
+            });
+            app._scoreBoard.increaseTotal();
+            if (window.score.noMistake < 1){                
+                app._scoreBoard.increaseSuccess();
+            }
+        } else {
+            $('#verb-input').addClass('wrong', 300, () => {
+                $('#verb-input').removeClass('wrong', 200);
+            });
+            app._questionBox.clearAnswer();
+            if (window.score.noMistake < 1){
+                app._scoreBoard.increaseMissed();
+            } if (window.score.noMistake >= 2){
+                app._questionBox.showCorrectAnswer(window.score.conjugatedVerb);
+            }
+            window.score.noMistake += 1;
+        }
     }
 
 }

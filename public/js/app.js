@@ -2,102 +2,21 @@ class App {
 
     constructor (){
         this._sideNav = new SideNav('mainNav')
-        this._questionBox = new QuestionBox('question-card', submitQuestion);
+        this._questionBox = new QuestionBox('question-card');
         this._verbHelp = new VerbHelp('mainNav');
         this._scoreBoard = new ScoreBoard('score');
+        this._verbExercise = new VerbExercise();
 
     }
     
     run(){
         
-        fetchQuestion();
-        //const _sideNav = new SideNav('mainNav')
+        this._verbExercise.fetchQuestion();
         this._sideNav.bindEvents();
-        this._sideNav.closeNav();
-       
-        
-    }
-
-    getsideNav(){
-        return this._sideNav;
-
+        this._sideNav.closeNav();   
     }
 
 }
-
-class Exercise {
-
-    
-}
-
-const app = new App();
-
-window.score = { };
-window.score.tense = 'present';
-
-
-// MOVE TO CLASSES
-
-function setTense(tense) {
-    window.score.tense = tense;
-    fetchQuestion();
-    // update the text    
-}
-
-function resetScore(){
-    app._scoreBoard.setScore(0, 0, 0);
-}
-
-function fetchQuestion() {
-    
-    const tense = window.score.tense || 'present';
-    $.get('/question?tense=' + tense, function(data, status) {
-        /* this code is executed when get requests to my-url returns with a response */
-        const pronoun = data.pronoun;
-        const conjugatedVerb = data.verb.conjugations[data.tense][pronoun];
-        const infinitive = data.verb.infinitive;
-        const translation = data.verb.translation;
-        const verbType = data.verb.type;
-
-        app._verbHelp.updateInfo(infinitive, translation, verbType);
-
-        app._questionBox.setQuestion(tense, pronoun, infinitive);
-        app._sideNav.bindEvents();
-        window.score.conjugatedVerb = conjugatedVerb;
-        window.score.noMistake = 0; // resets every round
-    });
-}
-
-function submitQuestion() {
-    const isCorrect = app._questionBox.getAnswer() === window.score.conjugatedVerb;
-    if (isCorrect) {
-        //TODO: create a step that replicates the alert effect of waiting from a user input, and will clear the exercise
-        $('#verb-input').addClass('correct', 300, () => {
-            $('#verb-input').removeClass('correct', 200, () => {
-                fetchQuestion();
-            })
-        });
-        app._scoreBoard.increaseTotal();
-        if (window.score.noMistake < 1){                
-            app._scoreBoard.increaseSuccess();
-        }
-    } else {
-        $('#verb-input').addClass('wrong', 300, () => {
-            $('#verb-input').removeClass('wrong', 200);
-        });
-        app._questionBox.clearAnswer();
-        if (window.score.noMistake < 1){
-            app._scoreBoard.increaseMissed();
-        } if (window.score.noMistake >= 2){
-            app._questionBox.showCorrectAnswer(window.score.conjugatedVerb);
-        }
-        window.score.noMistake += 1;
-    }
-}
-
-//
-
-
 
 
 const navigationHtmls = {
@@ -203,7 +122,11 @@ const navigationHtmls = {
                     <br><br>`
 };
 
-/* Set the width of the side navigation to 250px */
+
+const app = new App();
+
+window.score = { };
+window.score.tense = 'present';
 
 
 $( document ).ready(function() {
