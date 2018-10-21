@@ -26,9 +26,20 @@ class ScoreBoard {
             </div>`
         );
 
-        this.successAnimation = new BootstrapAnimation('success-wrapper', 'animated bounce', true);
-        this.missedAnimation = new BootstrapAnimation('missed-wrapper', 'animated bounce', true);
-        this.totalAnimation = new BootstrapAnimation('total-wrapper', 'animated bounce', true);
+        this.successAnimation = new CombinedAnimation([
+            new BootstrapAnimation('success-wrapper', 'bounce'),
+            new CustomClassAnimation('success', 'active')
+        ]);
+
+        this.missedAnimation = new CombinedAnimation([
+            new BootstrapAnimation('missed-wrapper', 'bounce'),
+            new CustomClassAnimation('missed', 'active')
+        ]);
+
+        this.totalAnimation = new CombinedAnimation([
+            new BootstrapAnimation('total-wrapper', 'bounce'),
+            new CustomClassAnimation('totalScore', 'active')
+        ]);
     }
 
     getSuccess() { return this.success; }
