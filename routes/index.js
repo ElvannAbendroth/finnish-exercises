@@ -10,76 +10,29 @@ const fs = require('fs');
 const templateEngine = require('../models/templateEngine');
 
 //Wild functions
-function buildRandomQuestion() {
+function buildRandomQuestion(tense) {
   const randomVerbIndex = Math.floor(Math.random() * verbsPresent.length);
   const verb = new Verb(verbsPresent[randomVerbIndex]);
   const randomPronounIndex = Math.floor(Math.random() * pronouns.length);
   const pronoun = pronouns[randomPronounIndex];
-  return new Question(verb, "present", pronoun);
+  return new Question(verb, tense, pronoun);
 }
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  const template = fs.readFileSync(path.join(__dirname, '../view/template-2.html'), "utf8");
-  const result = templateEngine(
-    template, 
-    '/', 
-    'Index', 
-    '', 
-    'I\'m the index'
-  );
+  const template = fs.readFileSync(path.join(__dirname, '../view/index.html'), "utf8");
+  const result = templateEngine(template, '/', 'Opetellaan Suomea', '', '');
   res.send(result);
 });
 
 /* GET List of Questions */
-
 router.get('/question', function(req, res, next) {
-  res.send(buildRandomQuestion());  
+  const tense = req.query.tense || 'present';
+  if (!['present', 'past', 'conditional'].includes(tense)) {
+    res.status(400).send('We do not support tense: ' + tense);
+  }
+  res.send(buildRandomQuestion(tense));
 });
 
-/* GET blank */
-
-router.get('/blank', function(req, res, next) {
-  const template = fs.readFileSync(path.join(__dirname, '../view/template.html'), "utf8");
-  const result = templateEngine(
-    template, 
-    'blank', 
-    'Blank', 
-    '', 
-    'I\'m a blank file'
-  );
-  res.send(result);
-});
-
-/* GET present-exercises */
-
-router.get('/present-exercises', function(req, res, next) {
-  const template = fs.readFileSync(path.join(__dirname, '../view/template.html'), "utf8");
-  const content = fs.readFileSync(path.join(__dirname, '../public/content/present-exercises.html'), "utf8");
-  const result = templateEngine(
-    template, 
-    'present-exercises', 
-    'Present Exercises', 
-    '<script src="js/present-exercises.js"></script>', 
-    content
-  );
-  res.send(result);
-});
-
-
-router.get('/pronouns', function(req, res, next) {
-  const template = fs.readFileSync(path.join(__dirname, '../view/template.html'), "utf8");
-  const content = fs.readFileSync(path.join(__dirname, '../view/pronouns.html'), "utf8");
-  const result = templateEngine(template, 'pronouns', 'Pronouns', '', content);
-  res.send(result);
-});
-
-
-/* GET Styles */
-
-/*router.get('/custom-style', function(req, res, next) {
-  res.send('../public/stylesheets/style.css');
-  //res.sendFile('../public/stylesheets/style.css');
-});*/
 
 module.exports = router;

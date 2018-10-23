@@ -2,8 +2,10 @@
 body {
   background: #5E4FBA;
   height: 100%;
+  width:100%;
   color: #fff;
-  font-family: 'Montserrat', sans-serif; }
+  font-family: 'Montserrat', sans-serif; 
+  overflow-x:hidden;}
 
 #background {
   position: fixed;
@@ -15,7 +17,8 @@ body {
   background: -o-linear-gradient(119.4deg, #4176A8 0%, rgba(255, 255, 255, 0) 100%), #5E4FBA;
   background: linear-gradient(330.6deg, #4176A8 0%, rgba(255, 255, 255, 0) 100%), #5E4FBA;
   background-repeat: no-repeat;
-  z-index: -2; }
+  z-index: -2;
+  overflow-x:hidden; }
 
 #pageTitle{
   margin: 0.9em;;
@@ -31,7 +34,6 @@ body {
   right: 0;
   bottom: 0;
   top: 0;
-  padding-top:20px;
   background: #fff;
   background-repeat: no-repeat;
   
@@ -62,7 +64,9 @@ body {
   background: none;
   -webkit-box-shadow: none;
   box-shadow: none;
-  text-align: center; }
+  text-align: center;
+  padding-top:0px;
+  padding-bottom:0px; }
 
 .navbar-brand{
   font-size:1.4em;
@@ -74,7 +78,6 @@ body {
   line-height: normal;
   /*font-size: 24px;*/
   font-size: 1.25rem;
-  margin-bottom: 0;
   vertical-align: baseline; }
 
 h2 {
@@ -82,7 +85,7 @@ h2 {
   font-weight: 600;
   line-height: normal;
   font-size: 18px;
-  margin-bottom: 0.3em;
+  margin-top: 0.7em;
   vertical-align: baseline; }
 
 .score-number {
@@ -111,15 +114,29 @@ h2 {
   -webkit-writing-mode: horizontal-tb !important;
   -webkit-border-radius: 0;
   border-radius: 0; 
-  padding-left: 0;
+  padding-left: 7px;
+  margin-right:5px;
+}
+
+
+#verb-input.correct {
+  background-color: #90CEB8;
 }
 
 #verb-input.wrong {
-  background-color: red;
+  background-color: #EDC1D3;
 }
 
-#verb-input.correct {
-  background-color: rgba(0, 255, 0, 0.5);
+#success.active, #success-icon.active #success-text.active{
+  color: #90CEB8;
+}
+
+#missed.active, #missed-icon.active, #missed-text.active{
+  color: #EDC1D3;
+}
+
+#totalExercises.active, #total-icon.active, #total-text.active{
+  color: #B8D8F6;
 }
 
 textarea:focus, input:focus, #verb-input:focus {
@@ -148,9 +165,14 @@ textarea:focus, input:focus, #verb-input:focus {
     }
 }
 
-@media only screen and (max-width: 540px) {
-    
-  
+
+@media only screen and (min-width: 512px){
+
+  .menu-modal {
+    width:450px;
+    left:auto;
+
+  }
 }
 
 @media only screen and (min-width: 720px) {
@@ -160,3 +182,140 @@ textarea:focus, input:focus, #verb-input:focus {
   }
   
 }
+
+.button-icon {
+  align-items: flex-start;
+  text-align: center;
+  cursor: default;
+  color: inherit;
+  background-color: #ffff;
+  box-sizing: content-box;
+  padding: 0px;
+  border-style: none;
+
+}
+
+.btn-primary{
+  background-color:#5E4FBA !important;
+}
+
+.btn-primary:active{
+  background-color: darken(#5E4FBA, 10% ) !important;
+}
+
+.btn-primary:active .btn-primary:focus{
+  background-color: darken(#5E4FBA, 10% ) !important;
+}
+
+.btn-primary:hover {
+  background-color: lighten(#5E4FBA, 10% ) !important;
+}
+
+.btn-menu{
+  background-color:#fff !important;
+  color: #5E4FBA !important;
+  width: 100%;
+  margin:0px;
+  border-radius:0px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  text-transform: lowercase;
+  font-size: inherit;
+  text-align: left;
+  padding-top:0px;
+  padding-bottom:0px;
+
+}
+
+.btn-menu:active{
+  background-color: darken(#fff, 10% ) !important;
+  color: #5E4FBA !important;
+  border-radius:0px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.btn-menu:active, .btn-primary:focus{
+  background-color: darken(#fff, 10% ) !important;
+  color: #5E4FBA !important;
+  border-radius:0px;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.btn-menu:hover {
+  background-color: darken(#fff, 10% ) !important;
+  color: #5E4FBA !important;
+  border-radius:0px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+#input-line {
+  padding-bottom: 0px !important;
+}
+
+#pronoun {
+  margin-top:0px;
+  margin-bottom:0px;
+}
+
+/* SIDENAV STUFFS */
+
+/* The side navigation menu */
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  right: 0;
+  bottom: 0;
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  right: 0;
+  overflow:scroll; 
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */  
+
+  background-color: #fff;
+  background-repeat: no-repeat;
+  color: #5E4FBA;
+  
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  //font-size: 25px;
+  color: #5E4FBA;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+/*.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+} */
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+/* END SIDENAV */
