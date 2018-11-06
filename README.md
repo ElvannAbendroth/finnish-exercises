@@ -10,7 +10,21 @@
 We're also hoping on adding more grammar practice content, declinaisons & voccabulary to the app.
 
 # FrontEnd
-This app is build using Javascript, SCSS & MDBootstrap Framework.
+Language: Javascript
+Main Libaries: JQuery, SCSS & MDBootstrap Framework
+
+The project is very frontend focused and does not contain a lot of backend code.
 
 # BackEnd
-This app is using Javascript's JQuery and Express.js, and npm.
+Language: Javascript
+Libraries: express.js
+
+# App Engine
+Google Cloud
+
+
+# Final Project:
+The application is available at: https://opetellaan-suomea-project.appspot.com/
+
+Contact: elvann.abendroth@gmail.com
+
