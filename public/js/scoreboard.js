@@ -49,8 +49,8 @@ class ScoreBoard {
     getTotal() { return this.total; }
 
     increaseSuccess() {
-        this.total++;
-        $('#success').html(this.total)
+        this.success++;
+        $('#success').html(this.success)
         this.successAnimation.run();
     }
 
