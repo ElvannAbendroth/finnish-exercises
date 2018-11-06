@@ -58,19 +58,19 @@ class SideNav {
                         <div class="d-flex flex-column">
 
                             <h2 class="p-2"><i class="material-icons p-2 align-middle">school</i>learn finnish</h2>
-                            <button id="pronounButton" data-dismiss="modal" class="btn btn-menu""><i class="material-icons p-2 align-middle">star</i>pronouns</button>
-                            <button id="consonantButton" class="btn btn-menu"><i class="material-icons p-2 align-middle">star</i>consonant gradation</button>
-                            <button id="conjugationButton" class="btn btn-menu"><i class="material-icons p-2 align-middle">star</i>verb conjugaison</button>
+                            <a id="pronounButton" data-dismiss="modal" class="btn btn-menu""><i class="material-icons p-2 align-middle">star</i>pronouns</a>
+                            <a id="consonantButton" class="btn btn-menu"><i class="material-icons p-2 align-middle">star</i>consonant gradation</a>
+                            <a id="conjugationButton" class="btn btn-menu"><i class="material-icons p-2 align-middle">star</i>verb conjugaison</a>
 
 
 
                             <h2 class="p-2"><i class="material-icons p-2 align-middle">settings</i>exercise settings</h2>
-                            <button id="presentButton" class="btn btn-menu"><i class="material-icons p-2 align-middle">check</i>present tense</button>
-                            <button id="pastButton" class="btn btn-menu"><i class="material-icons p-2 align-middle">check</i>past tense</button>
-                            <button id="conditionalButton" class="btn btn-menu"><i class="material-icons p-2 align-middle">check</i>conditional mood</button>
+                            <a id="presentButton" class="btn btn-menu"><i class="material-icons p-2 align-middle">check</i>present tense</a>
+                            <a id="pastButton" class="btn btn-menu"><i class="material-icons p-2 align-middle">check</i>past tense</a>
+                            <a id="conditionalButton" class="btn btn-menu"><i class="material-icons p-2 align-middle">check</i>conditional mood</a>
                             <hr>
-                            <button id="resetButton" class="btn btn-menu"><i class="material-icons p-2 align-middle">highlight_off</i>reset score</button>
-                            <button id="aboutButton" class="btn btn-menu"><i class="material-icons p-2 align-middle">info</i>about</button>
+                            <a id="resetButton" class="btn btn-menu"><i class="material-icons p-2 align-middle">highlight_off</i>reset score</a>
+                            <a id="aboutButton" class="btn btn-menu"><i class="material-icons p-2 align-middle">info</i>about</a>
                             <br>
                         </div>`,
 
@@ -94,7 +94,7 @@ class SideNav {
                                 <li>mp > mm</li>
                             </ul>
                         </div>
-                        <button id="returnButton" class="btn btn-menu"><i class="material-icons p-2 align-middle">arrow_back_ios</i>return</button>
+                        <a id="returnButton" class="btn btn-menu"><i class="material-icons p-2 align-middle">arrow_back_ios</i>return</a>
                         <br><br>`,
 
             'pronoun': `<div class="d-flex p-4 justify-content-between">
@@ -113,7 +113,7 @@ class SideNav {
                             <li>he - they</li>
                         </ul>
                         </div>
-                        <button id="returnButton" class="btn btn-menu"><i class="material-icons p-2 align-middle">arrow_back_ios</i>return</button>
+                        <a id="returnButton" class="btn btn-menu"><i class="material-icons p-2 align-middle">arrow_back_ios</i>return</a>
                         `,
 
             'about': `<div class="d-flex p-4 justify-content-between">
@@ -126,7 +126,7 @@ class SideNav {
                         <p>In the current exercise, you are given verb in it’s infinitive form, and you must conjugate it to the present tense accordingly to a given pronoun.  The translate window gives you a few tips on how to conjugate verb in Finnish.</p>
                         <p> Questions?<br>
                         <a href="http://www.elvann.com/contact" target="_blank">elvann.com/contact</a></p><br>
-                        <button id="returnButton" class="btn btn-menu"><i class="material-icons p-2 align-middle">arrow_back_ios</i>return</button>
+                        <a id="returnButton" class="btn btn-menu"><i class="material-icons p-2 align-middle">arrow_back_ios</i>return</a>
                     </div>`,
 
             'conjugation': ` <div class="d-flex p-4 justify-content-between">
@@ -148,7 +148,7 @@ class SideNav {
 
 
                             </div>
-                            <button id="returnButton" class="btn btn-menu"><i class="material-icons p-2 align-middle">arrow_back_ios</i>return</button>
+                            <a id="returnButton" class="btn btn-menu"><i class="material-icons p-2 align-middle">arrow_back_ios</i>return</a>
                             <br><br>`
         };
         return content[key];
