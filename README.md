@@ -1,5 +1,10 @@
 # Opetellaan Suomea
-"Opetellaan Suomea" is a web app designed to help learn Finnish verbs, voccabulary, gammar and declinaison through exercise oriented contend
+"Opetellaan Suomea" is a web app designed to help learn Finnish verbs, voccabulary, gammar and declinaison through exercise oriented contend.
+
+The idea of this project was to create a tool to help me learn Finnish verb conjugaisons and have a proper tool for it since I couldn't find any app doing it.  I thought it could also be helpful for other people trying to learn the language.  The secondary objective of the project was also for me to study web developement and depthen my knowledge of some of the common tools used in simple projects.
+
+Live demo: https://opetellaan-suomea-project.appspot.com/
+Contact: elvann.abendroth@gmail.com
 
 ## Features
 - Finnish verb conjugaison exercises (present, past & conditional)
@@ -23,8 +28,4 @@ Libraries: express.js
 Google Cloud
 
 
-## Final Project:
-The application is available at: https://opetellaan-suomea-project.appspot.com/
-
-Contact: elvann.abendroth@gmail.com
 
