@@ -26,12 +26,12 @@ class SideNav {
 
     openNav(key = 'default') {
         this.navigationContent(key);
-        document.getElementById(this.wrapperID).style.width = "100%";
+        $("#mainNav").addClass('navbarOpen');
     }
 
     /* Set the width of the side navigation to 0 */
     closeNav() {
-        document.getElementById(this.wrapperID).style.width = "0";
+        $("#mainNav").removeClass('navbarOpen');
     };
 
     navigationContent(key = 'default') {
