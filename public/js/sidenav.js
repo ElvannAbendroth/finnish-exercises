@@ -32,7 +32,7 @@ class SideNav {
     /* Set the width of the side navigation to 0 */
     closeNav() {
         $("#mainNav").removeClass('navbarOpen');
-    };
+    }
 
     navigationContent(key = 'default') {
         if (key === 'help'){

@@ -50,19 +50,19 @@ class ScoreBoard {
 
     increaseSuccess() {
         this.success++;
-        $('#success').html(this.success)
+        this.update()
         this.successAnimation.run();
     }
 
     increaseMissed() {
         this.missed++;
-        $('#missed').html(this.missed);
+        this.update()
         this.missedAnimation.run();
     }
 
     increaseTotal() {
         this.total++;
-        $('#totalExercises').html(this.total);
+        this.update()
         this.totalAnimation.run();
     }
 
@@ -70,6 +70,14 @@ class ScoreBoard {
         this.success = 0;
         this.missed = 0;
         this.total = 0;
+        this.update()
+
+    }
+
+    update(){
+        $('#success').html(this.success);
+        $('#missed').html(this.missed);
+        $('#totalExercises').html(this.total);
     }
 
 }
