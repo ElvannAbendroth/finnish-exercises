@@ -1,41 +1,38 @@
 class Verb {
 
-    constructor(formsList) {
-        this.infinitive = formsList[0];
-        this.translation = formsList[1];
-        this.type = formsList[2];
+    constructor(verbEntity) {
 
-        const presentOffset = 3;
-        const pastOffset = presentOffset + 7;
-        const conditionalOffset = pastOffset + 7;
-    
+        this.infinitive = verbEntity.infinitive;
+        this.translation = verbEntity.translation;
+        this.type = verbEntity.type;
+
         this.conjugations = {
             "present": {
-                "minä": formsList[presentOffset + 0],
-                "sinä": formsList[presentOffset + 1],
-                "hän": formsList[presentOffset + 2],
-                "me": formsList[presentOffset + 3],
-                "te": formsList[presentOffset + 4],
-                "he": formsList[presentOffset + 5],
-                "(passive)": formsList[presentOffset + 6]
+                "minä": verbEntity.present_fs,
+                "sinä": verbEntity.present_ss,
+                "hän": verbEntity.present_ts,
+                "me": verbEntity.present_fp,
+                "te": verbEntity.present_sp,
+                "he": verbEntity.present_tp,
+                "(passive)": verbEntity.present_p
             },
             "past": {
-                "minä": formsList[pastOffset + 0],
-                "sinä": formsList[pastOffset + 1],
-                "hän": formsList[pastOffset + 2],
-                "me": formsList[pastOffset + 3],
-                "te": formsList[pastOffset + 4],
-                "he": formsList[pastOffset + 5],
-                "(passive)": formsList[pastOffset + 6]
+                "minä": verbEntity.past_fs,
+                "sinä": verbEntity.past_ss,
+                "hän": verbEntity.past_ts,
+                "me": verbEntity.past_fp,
+                "te": verbEntity.past_sp,
+                "he": verbEntity.past_tp,
+                "(passive)": verbEntity.past_p
             },
             "conditional": {
-                "minä": formsList[conditionalOffset + 0],
-                "sinä": formsList[conditionalOffset + 1],
-                "hän": formsList[conditionalOffset + 2],
-                "me": formsList[conditionalOffset + 3],
-                "te": formsList[conditionalOffset + 4],
-                "he": formsList[conditionalOffset + 5],
-                "(passive)": formsList[conditionalOffset + 6]
+                "minä": verbEntity.cond_fs,
+                "sinä": verbEntity.cond_ss,
+                "hän": verbEntity.cond_ts,
+                "me": verbEntity.cond_fp,
+                "te": verbEntity.cond_sp,
+                "he": verbEntity.cond_tp,
+                "(passive)": verbEntity.cond_p
             }
         };
     }
@@ -50,7 +47,7 @@ class Verb {
 
     getType()
     {
-        return this.type();
+        return this.type;
     }
 
 }
