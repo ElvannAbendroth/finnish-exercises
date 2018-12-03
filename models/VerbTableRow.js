@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+require('dotenv').config();
 const sequelize = new Sequelize('os_production', 'Webapp_prod', process.env.DB_PASSWORD, {
 
     host: '35.237.208.158',
