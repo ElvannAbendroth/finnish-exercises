@@ -3,16 +3,17 @@ var router = express.Router();
 const Verb = require('../models/Verb');
 const Question = require('../models/Question');
 const pronouns = require('../models/PronounEnum');
-const verbsPresent = require('../models/verbData');
+const VerbTableRow = require('../models/VerbTableRow');
 var path = require('path');
 
 const fs = require('fs');
 const templateEngine = require('../models/templateEngine');
 
 //Wild functions
-function buildRandomQuestion(tense) {
-  const randomVerbIndex = Math.floor(Math.random() * verbsPresent.length);
-  const verb = new Verb(verbsPresent[randomVerbIndex]);
+async function buildRandomQuestion(tense) {
+  const verbData = await VerbTableRow.findAll();
+  const randomVerbIndex = Math.floor(Math.random() * verbData.length);
+  const verb = new Verb(verbData[randomVerbIndex]);
   const randomPronounIndex = Math.floor(Math.random() * pronouns.length);
   const pronoun = pronouns[randomPronounIndex];
   return new Question(verb, tense, pronoun);
@@ -31,7 +32,7 @@ router.get('/question', function(req, res, next) {
   if (!['present', 'past', 'conditional'].includes(tense)) {
     res.status(400).send('We do not support tense: ' + tense);
   }
-  res.send(buildRandomQuestion(tense));
+  buildRandomQuestion(tense).then(question => res.send(question));
 });
 
 
